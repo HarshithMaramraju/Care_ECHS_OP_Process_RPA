@@ -1,0 +1,967 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="olderTest" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="olderTest_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.Activities.System.Collections</x:String>
+      <x:String>UiPath.Activities.System.Arrays</x:String>
+      <x:String>System.Security</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.StudioWeb.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="olderTest" sap:VirtualizedContainerService.HintSize="1452.0000000000005,2081.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="dropdownOptions" />
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="dropdownNames" />
+      <Variable x:TypeArguments="x:String" Name="attributeExtracted" />
+      <Variable x:TypeArguments="x:String" Name="fileName" />
+      <Variable x:TypeArguments="x:String" Name="text" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Chrome Bill Processing Agency For ECHS(1)" sap:VirtualizedContainerService.HintSize="1444.8,2058.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1411.2,1818.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1377.6,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:FindChildren Children="[dropdownOptions]" DisplayName="Find Children 'OPTION'" Filter="&lt;webctrl tag='OPTION' /&gt;" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_CHILDREN">
+                    <ui:FindChildren.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7b78c7c7-522b-4b0d-a887-f657b7b33790" InformativeScreenshot="d75bced9435fea014314e8ae5c8f88d3" Selector="&lt;webctrl id='medtable' tag='TABLE' innertext='                                       Note:Maximum file size for uploading is 10MB                 Help                                                                      Select Document Type From The List                              Bill Details Consultation Notes Contingent Bill Copy of Cancelled Cheque Covid Test Report Death Certificate Delay Condonation Letter (Intimation) Delay Condonation Letter (Submission) Disability Certificate (Intimation) Disability Certificate (Submission) Discharge Summary*' /&gt;&lt;webctrl id='uploadDocType' tag='SELECT' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:FindChildren.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:FindChildren>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1377.6,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="[index]" DisplayName="For Each currentUiElement" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[dropdownOptions]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="ui:UiElement">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="ui:UiElement" Name="currentUiElement" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,438.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NGetAttributeGeneric x:TypeArguments="x:String" Attribute="aaname" DisplayName="Get Attribute 'Select Document Type Fr…'" sap:VirtualizedContainerService.HintSize="382.4,220" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_2" InUiElement="[currentUiElement]" Result="[attributeExtracted]" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                            <uix:NGetAttributeGeneric.Target>
+                              <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" DesignTimeRectangle="176, 345, 276, 114" DesignTimeScaleFactor="1" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl id='uploadDocType' tag='SELECT' innertext='Bill Details Consultation Notes Contingent Bill Copy of Cancelled Cheque Covid Test Report Death Certificate Delay Condonation Letter (Intimation) Delay Condonation Letter (Submission) Disability Certificate (Intimation) Disability Certificate (Submission) Discharge Summary Doctor Certificate Drug Certificate E I R ECHS Card Copy Emergency Letter (By Hospital) Extended Stay Certificate Extension Of Stay - Approval Extension Of Stay - Permission Feedback Form Geo-Tagged Photo of Patient Geo-Tagged Photo of P*' /&gt;" Guid="57e7b61a-7e82-4b9b-bfb0-a9c52776b7c7" ImageBase64="" InformativeScreenshot="8a9e822ca5869687f443a90cee0710bd.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target DesignTimeRectangle="93, 345, 71, 114" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Select Document Type From The List' check:innerText='Select Document Type From The List' /&gt;" Guid="a9cf1160-805c-4081-833c-c0905eb9e841" SearchSteps="FuzzySelector" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NGetAttributeGeneric.Target>
+                          </uix:NGetAttributeGeneric>
+                          <uasa:AppendItemToList x:TypeArguments="x:String" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="382.4,158.4" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_1" ItemIndex="[index]" ItemToAppend="[New List(Of String) From {attributeExtracted}(0)]" List="[dropdownNames]" />
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ForEach>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="D:\UiPath\Care_ECHS_OP\Care_ECHS_OP\ECHS_OP 26\28440542" sap:VirtualizedContainerService.HintSize="1377.6,1643.2" sap2010:WorkflowViewState.IdRef="ForEachFileX_3" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+              <ui:ForEachFileX.Body>
+                <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
+                  <ActivityAction.Argument1>
+                    <DelegateInArgument x:TypeArguments="si:FileInfo" Name="CurrentFile" />
+                  </ActivityAction.Argument1>
+                  <ActivityAction.Argument2>
+                    <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
+                  </ActivityAction.Argument2>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1344,1352.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap:VirtualizedContainerService.HintSize="1310.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[fileName]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[CurrentFile.Name.ToString.Replace("28437632_S_","").Replace("_DS.pdf","")]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1310.4,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="550.4,1109.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentText" sap:VirtualizedContainerService.HintSize="516.8,1049.6" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[dropdownNames]">
+                            <ui:ForEach.Body>
+                              <ActivityAction x:TypeArguments="x:String">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="483.2,912" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:String">[text]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:String">[currentText.ToString]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <If Condition="[text.StartsWith(&quot;Bill&quot;)]" DisplayName="If-Bills is present in File" sap:VirtualizedContainerService.HintSize="449.6,738.4" sap2010:WorkflowViewState.IdRef="If_1">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <If.Then>
+                                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,487.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Select Document Type Fr…'" sap:VirtualizedContainerService.HintSize="382.4,189.6" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                                          <uix:NClick.Target>
+                                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="aef03b85-7875-44a4-9c71-ce6f04ab39b6" CvTextArea="602, 452, 87, 15" CvTextArgument="Bill Details" CvType="Text" DesignTimeRectangle="604, 450, 321, 19" DesignTimeScaleFactor="1.25" FullSelectorArgument="[string.Format(&quot;&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl id='uploadDocType' tag='SELECT' /&gt;&lt;webctrl tag='OPTION' aaname='{0}' /&gt;&quot;, text)]" Guid="91ee128a-04d9-451b-afbb-9f57a89d2809" InformativeScreenshot="31a93379ba9eaf3e9d23281746983d69.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/claimlist.do' /&gt;" SearchSteps="Selector, CV" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                                  <uix:Target DesignTimeRectangle="304, 449, 284, 138" ElementType="Text" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Select Document Type From The List' check:innerText='Select Document Type From The List' /&gt;" Guid="f7c7f0e2-42a3-417f-9c20-481341b6b2f9" SearchSteps="Selector, FuzzySelector" />
+                                                </scg:List>
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NClick.Target>
+                                        </uix:NClick>
+                                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'No file chosen'" sap:VirtualizedContainerService.HintSize="382.4,189.6" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                                          <uix:NClick.Target>
+                                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="2494bef9-50a5-4ce9-8efc-ba3750a1ecc0" ContentHash="KK16PFn-aEOyiKtuEhCc7w" CvElementArea="960, 503, 110, 30" CvTextArea="970, 509, 217, 17" CvTextArgument="Choose File No file chosen" CvType="Button" DesignTimeRectangle="962, 505, 352, 26" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl id='medicalReport' tag='INPUT' name='medicalReport' type='file' /&gt;" Guid="5feb5045-a009-4b9a-b497-b7fbf07bf8ce" InformativeScreenshot="ec48303063299608ea454847b9bb1e4d.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/3TqBMgaUt0mFgAe-LNn6DQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/claimlist.do' /&gt;" SearchSteps="Selector, CV" Version="V4" Visibility="Interactive">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                                  <uix:Target CVScreenId="2494bef9-50a5-4ce9-8efc-ba3750a1ecc0" CvTextArea="1071, 509, 116, 16" CvTextArgument="No file chosen" CvType="Text" DesignTimeRectangle="1071, 508, 116, 17" ElementType="Text" Guid="50421022-2f87-4e24-85bd-f0e9462be1aa" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                                </scg:List>
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NClick.Target>
+                                        </uix:NClick>
+                                        <uix:NCheckState DisplayName="Check App State 'Open'" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Timeout="5" Version="V4">
+                                          <uix:NCheckState.IfExists>
+                                            <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,494.4" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'File &amp;name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="416,250.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="HardwareEvents" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Text="[CurrentFile.FullName]" Version="V4">
+                                                <uix:NTypeInto.Target>
+                                                  <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="26ddc92d-9e33-46c3-bbe1-ee5211d54734" ContentHash="NewcVP9GFkO-KhN0oeyizA" CvElementArea="232, 499, 449, 31" CvType="InputBox" DesignTimeRectangle="230, 501, 450, 29" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' aaname='File name:' idx='1' /&gt;" Guid="5b5ff1cb-9b17-4e40-9b3d-7c4e65df5399" InformativeScreenshot="51460961d4f077f9503f6dd973e58594.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/rOh5h_QCCUOJ3XMpNojZjQ" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='*' title='Open' /&gt;" SearchSteps="Selector, CV" Version="V4" Visibility="Interactive">
+                                                    <uix:TargetAnchorable.Anchors>
+                                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                                        <uix:Target CVScreenId="26ddc92d-9e33-46c3-bbe1-ee5211d54734" CvTextArea="155, 507, 69, 14" CvTextArgument="File name:" CvType="Text" DesignTimeRectangle="157, 505, 67, 20" ElementType="Text" FullSelectorArgument="&lt;wnd ctrlid='1090' title='File &amp;amp;name:' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1090' title='File &amp;amp;name:' check:text='File &amp;amp;name:' /&gt;" Guid="51d8f1d6-1979-4e81-b1a1-b6460e0ce158" SearchSteps="Selector, FuzzySelector, CV" />
+                                                      </scg:List>
+                                                    </uix:TargetAnchorable.Anchors>
+                                                  </uix:TargetAnchorable>
+                                                </uix:NTypeInto.Target>
+                                              </uix:NTypeInto>
+                                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click '&amp;Open'" sap:VirtualizedContainerService.HintSize="416,182.4" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                                                <uix:NClick.Target>
+                                                  <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="1b2c203e-191a-449a-8883-868317e022be" ContentHash="g86bEZl7ukeyteg4QE-L3w" CvElementArea="694, 535, 110, 33" CvTextArea="729, 545, 38, 17" CvTextArgument="Open" CvType="Button" DesignTimeRectangle="695, 537, 110, 33" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlid='1' aaname='Open' /&gt;" Guid="7f61cf98-8db7-455a-9949-0da60f034f4f" InformativeScreenshot="8146d40763a99530b3ae09b10a529f06.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/RZifaWO9MkW0KJV2lliypA" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Open' /&gt;" SearchSteps="Selector, CV" Version="V4" Visibility="Interactive">
+                                                    <uix:TargetAnchorable.Anchors>
+                                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                                        <uix:Target CVScreenId="1b2c203e-191a-449a-8883-868317e022be" CvElementArea="819, 535, 110, 34" CvTextArea="850, 545, 46, 15" CvTextArgument="Cancel" CvType="Button" DesignTimeRectangle="820, 537, 110, 33" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlid='2' title='Cancel' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='2' title='Cancel' check:text='Cancel' /&gt;" Guid="af960f7d-f5c9-4a96-a49c-9bcbe877a6ad" SearchSteps="Selector, FuzzySelector, CV" />
+                                                      </scg:List>
+                                                    </uix:TargetAnchorable.Anchors>
+                                                  </uix:TargetAnchorable>
+                                                </uix:NClick.Target>
+                                              </uix:NClick>
+                                            </Sequence>
+                                          </uix:NCheckState.IfExists>
+                                          <uix:NCheckState.IfNotExists>
+                                            <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </Sequence>
+                                          </uix:NCheckState.IfNotExists>
+                                          <uix:NCheckState.Target>
+                                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" ContentHash="LVgjgqckAUqxRHEJ-m7Qlw" DesignTimeRectangle="0, 0, 960, 600" DesignTimeScaleFactor="1.25" Guid="db51dd50-6a22-4901-890c-676852bed615" InformativeScreenshot="5bab59b07e8db703d484165731aca6c9.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/PtI3Xabq-kK4XuKNraHFEg" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='*' title='Open' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive" />
+                                          </uix:NCheckState.Target>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </uix:NCheckState>
+                                      </Sequence>
+                                    </If.Then>
+                                    <If.Else>
+                                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </Sequence>
+                                    </If.Else>
+                                  </If>
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:ForEach.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:ForEach>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1310.4,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If Condition="[Not String.IsNullOrEmpty(CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;)) AndAlso CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;).StartsWith(&quot;BILL&quot;)]" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="If_3">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
+                    <ui:IfElseIfV2 Condition="[Not String.IsNullOrEmpty(CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;)) AndAlso CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;).StartsWith(&quot;BILL&quot;)]" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="1310.4,824.8" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
+                      <ui:IfElseIfV2.Else>
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </ui:IfElseIfV2.Else>
+                      <ui:IfElseIfV2.ElseIfs>
+                        <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Not String.IsNullOrEmpty(CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;)) AndAlso CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;).StartsWith(&quot;PRES&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,240.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NSelectItem DisplayName="Select Item 'Select Document Type Fr…'" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="Prescription Slip" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                                  <uix:NSelectItem.Items>
+                                    <scg:List x:TypeArguments="x:String" Capacity="43">
+                                      <x:String>Bill Details</x:String>
+                                      <x:String>Consultation Notes</x:String>
+                                      <x:String>Contingent Bill</x:String>
+                                      <x:String>Copy of Cancelled Cheque</x:String>
+                                      <x:String>Covid Test Report</x:String>
+                                      <x:String>Death Certificate</x:String>
+                                      <x:String>Delay Condonation Letter (Intimation)</x:String>
+                                      <x:String>Delay Condonation Letter (Submission)</x:String>
+                                      <x:String>Disability Certificate (Intimation)</x:String>
+                                      <x:String>Disability Certificate (Submission)</x:String>
+                                      <x:String>Discharge Summary</x:String>
+                                      <x:String>Doctor Certificate</x:String>
+                                      <x:String>Drug Certificate</x:String>
+                                      <x:String>E I R</x:String>
+                                      <x:String>ECHS Card Copy</x:String>
+                                      <x:String>Emergency Letter (By Hospital)</x:String>
+                                      <x:String>Extended Stay Certificate</x:String>
+                                      <x:String>Extension Of Stay - Approval</x:String>
+                                      <x:String>Extension Of Stay - Permission</x:String>
+                                      <x:String>Feedback Form</x:String>
+                                      <x:String>Geo-Tagged Photo of Patient</x:String>
+                                      <x:String>Geo-Tagged Photo of Patient</x:String>
+                                      <x:String>Lab Reports</x:String>
+                                      <x:String>M L C</x:String>
+                                      <x:String>Medical Reports</x:String>
+                                      <x:String>Medicine Issue Slip</x:String>
+                                      <x:String>NA Certificate</x:String>
+                                      <x:String>Others</x:String>
+                                      <x:String>Others</x:String>
+                                      <x:String>Outer pack of Implants</x:String>
+                                      <x:String>Personal Application</x:String>
+                                      <x:String>Prescription Slip</x:String>
+                                      <x:String>Referral Letter (By Polyclinic)</x:String>
+                                      <x:String>Sanction Letter</x:String>
+                                      <x:String>Self Attested Proforma (Intimation)</x:String>
+                                      <x:String>Self Attested Proforma (Submission)</x:String>
+                                      <x:String>Service Specialist Recommendation</x:String>
+                                      <x:String>Stay Extension Documents</x:String>
+                                      <x:String>Supplimentary Justification Document</x:String>
+                                      <x:String>Supplimentary Sanction Document</x:String>
+                                      <x:String>Unlisted Procedure Approval</x:String>
+                                      <x:String>Unlisted Procedure Docs</x:String>
+                                      <x:String>Unlisted Procedure Permission</x:String>
+                                    </scg:List>
+                                  </uix:NSelectItem.Items>
+                                  <uix:NSelectItem.Target>
+                                    <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" ContentHash="yKQvbGjPRU6XZCMDa80XxQ" DesignTimeRectangle="603, 384, 344, 138" DesignTimeScaleFactor="1.25" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='uploadDocType' tableRow='2' tag='SELECT' /&gt;" Guid="594ba709-acef-4e77-a8c1-7ca78c966bbc" ImageBase64="" InformativeScreenshot="308173e07733109aebe79fa5fe136626.png" Reference="YmiKxvfyLUez7XOoWA_QcQ/GFcd4no_iEqbp_Nc5HILlA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="304, 384, 284, 138" ElementType="Text" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Select Document Type From The List' check:innerText='Select Document Type From The List' /&gt;" Guid="d894d9be-dc93-4248-a5fd-ccfe71d3b7d5" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NSelectItem.Target>
+                                </uix:NSelectItem>
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Not String.IsNullOrEmpty(CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;)) AndAlso CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;).StartsWith(&quot;REF&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_4">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,240.8" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NSelectItem DisplayName="Select Item 'Select Document Type Fr…'" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Referral Letter (By Polyclinic)" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                                  <uix:NSelectItem.Items>
+                                    <scg:List x:TypeArguments="x:String" Capacity="43">
+                                      <x:String>Bill Details</x:String>
+                                      <x:String>Consultation Notes</x:String>
+                                      <x:String>Contingent Bill</x:String>
+                                      <x:String>Copy of Cancelled Cheque</x:String>
+                                      <x:String>Covid Test Report</x:String>
+                                      <x:String>Death Certificate</x:String>
+                                      <x:String>Delay Condonation Letter (Intimation)</x:String>
+                                      <x:String>Delay Condonation Letter (Submission)</x:String>
+                                      <x:String>Disability Certificate (Intimation)</x:String>
+                                      <x:String>Disability Certificate (Submission)</x:String>
+                                      <x:String>Discharge Summary</x:String>
+                                      <x:String>Doctor Certificate</x:String>
+                                      <x:String>Drug Certificate</x:String>
+                                      <x:String>E I R</x:String>
+                                      <x:String>ECHS Card Copy</x:String>
+                                      <x:String>Emergency Letter (By Hospital)</x:String>
+                                      <x:String>Extended Stay Certificate</x:String>
+                                      <x:String>Extension Of Stay - Approval</x:String>
+                                      <x:String>Extension Of Stay - Permission</x:String>
+                                      <x:String>Feedback Form</x:String>
+                                      <x:String>Geo-Tagged Photo of Patient</x:String>
+                                      <x:String>Geo-Tagged Photo of Patient</x:String>
+                                      <x:String>Lab Reports</x:String>
+                                      <x:String>M L C</x:String>
+                                      <x:String>Medical Reports</x:String>
+                                      <x:String>Medicine Issue Slip</x:String>
+                                      <x:String>NA Certificate</x:String>
+                                      <x:String>Others</x:String>
+                                      <x:String>Others</x:String>
+                                      <x:String>Outer pack of Implants</x:String>
+                                      <x:String>Personal Application</x:String>
+                                      <x:String>Prescription Slip</x:String>
+                                      <x:String>Referral Letter (By Polyclinic)</x:String>
+                                      <x:String>Sanction Letter</x:String>
+                                      <x:String>Self Attested Proforma (Intimation)</x:String>
+                                      <x:String>Self Attested Proforma (Submission)</x:String>
+                                      <x:String>Service Specialist Recommendation</x:String>
+                                      <x:String>Stay Extension Documents</x:String>
+                                      <x:String>Supplimentary Justification Document</x:String>
+                                      <x:String>Supplimentary Sanction Document</x:String>
+                                      <x:String>Unlisted Procedure Approval</x:String>
+                                      <x:String>Unlisted Procedure Docs</x:String>
+                                      <x:String>Unlisted Procedure Permission</x:String>
+                                    </scg:List>
+                                  </uix:NSelectItem.Items>
+                                  <uix:NSelectItem.Target>
+                                    <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" ContentHash="yKQvbGjPRU6XZCMDa80XxQ" DesignTimeRectangle="603, 384, 344, 138" DesignTimeScaleFactor="1.25" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='uploadDocType' tableRow='2' tag='SELECT' /&gt;" Guid="594ba709-acef-4e77-a8c1-7ca78c966bbc" ImageBase64="" InformativeScreenshot="308173e07733109aebe79fa5fe136626.png" Reference="YmiKxvfyLUez7XOoWA_QcQ/GFcd4no_iEqbp_Nc5HILlA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="304, 384, 284, 138" ElementType="Text" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Select Document Type From The List' check:innerText='Select Document Type From The List' /&gt;" Guid="d894d9be-dc93-4248-a5fd-ccfe71d3b7d5" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NSelectItem.Target>
+                                </uix:NSelectItem>
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Not String.IsNullOrEmpty(CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;)) AndAlso CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;).StartsWith(&quot;REPORT&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_5">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,240.8" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NSelectItem DisplayName="Select Item 'Select Document Type Fr…'" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="Medical Reports" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                                  <uix:NSelectItem.Items>
+                                    <scg:List x:TypeArguments="x:String" Capacity="43">
+                                      <x:String>Bill Details</x:String>
+                                      <x:String>Consultation Notes</x:String>
+                                      <x:String>Contingent Bill</x:String>
+                                      <x:String>Copy of Cancelled Cheque</x:String>
+                                      <x:String>Covid Test Report</x:String>
+                                      <x:String>Death Certificate</x:String>
+                                      <x:String>Delay Condonation Letter (Intimation)</x:String>
+                                      <x:String>Delay Condonation Letter (Submission)</x:String>
+                                      <x:String>Disability Certificate (Intimation)</x:String>
+                                      <x:String>Disability Certificate (Submission)</x:String>
+                                      <x:String>Discharge Summary</x:String>
+                                      <x:String>Doctor Certificate</x:String>
+                                      <x:String>Drug Certificate</x:String>
+                                      <x:String>E I R</x:String>
+                                      <x:String>ECHS Card Copy</x:String>
+                                      <x:String>Emergency Letter (By Hospital)</x:String>
+                                      <x:String>Extended Stay Certificate</x:String>
+                                      <x:String>Extension Of Stay - Approval</x:String>
+                                      <x:String>Extension Of Stay - Permission</x:String>
+                                      <x:String>Feedback Form</x:String>
+                                      <x:String>Geo-Tagged Photo of Patient</x:String>
+                                      <x:String>Geo-Tagged Photo of Patient</x:String>
+                                      <x:String>Lab Reports</x:String>
+                                      <x:String>M L C</x:String>
+                                      <x:String>Medical Reports</x:String>
+                                      <x:String>Medicine Issue Slip</x:String>
+                                      <x:String>NA Certificate</x:String>
+                                      <x:String>Others</x:String>
+                                      <x:String>Others</x:String>
+                                      <x:String>Outer pack of Implants</x:String>
+                                      <x:String>Personal Application</x:String>
+                                      <x:String>Prescription Slip</x:String>
+                                      <x:String>Referral Letter (By Polyclinic)</x:String>
+                                      <x:String>Sanction Letter</x:String>
+                                      <x:String>Self Attested Proforma (Intimation)</x:String>
+                                      <x:String>Self Attested Proforma (Submission)</x:String>
+                                      <x:String>Service Specialist Recommendation</x:String>
+                                      <x:String>Stay Extension Documents</x:String>
+                                      <x:String>Supplimentary Justification Document</x:String>
+                                      <x:String>Supplimentary Sanction Document</x:String>
+                                      <x:String>Unlisted Procedure Approval</x:String>
+                                      <x:String>Unlisted Procedure Docs</x:String>
+                                      <x:String>Unlisted Procedure Permission</x:String>
+                                    </scg:List>
+                                  </uix:NSelectItem.Items>
+                                  <uix:NSelectItem.Target>
+                                    <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" ContentHash="yKQvbGjPRU6XZCMDa80XxQ" DesignTimeRectangle="603, 384, 344, 138" DesignTimeScaleFactor="1.25" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='uploadDocType' tableRow='2' tag='SELECT' /&gt;" Guid="594ba709-acef-4e77-a8c1-7ca78c966bbc" ImageBase64="" InformativeScreenshot="308173e07733109aebe79fa5fe136626.png" Reference="YmiKxvfyLUez7XOoWA_QcQ/GFcd4no_iEqbp_Nc5HILlA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="304, 384, 284, 138" ElementType="Text" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Select Document Type From The List' check:innerText='Select Document Type From The List' /&gt;" Guid="d894d9be-dc93-4248-a5fd-ccfe71d3b7d5" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NSelectItem.Target>
+                                </uix:NSelectItem>
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Not String.IsNullOrEmpty(CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;)) AndAlso CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Replace(&quot;_DS.pdf&quot;, &quot;&quot;).StartsWith(&quot;ID&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_7">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,240.8" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NSelectItem DisplayName="Select Item 'Select Document Type Fr…'" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NSelectItem_5" Item="ECHS Card Copy" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                                  <uix:NSelectItem.Items>
+                                    <scg:List x:TypeArguments="x:String" Capacity="43">
+                                      <x:String>Bill Details</x:String>
+                                      <x:String>Consultation Notes</x:String>
+                                      <x:String>Contingent Bill</x:String>
+                                      <x:String>Copy of Cancelled Cheque</x:String>
+                                      <x:String>Covid Test Report</x:String>
+                                      <x:String>Death Certificate</x:String>
+                                      <x:String>Delay Condonation Letter (Intimation)</x:String>
+                                      <x:String>Delay Condonation Letter (Submission)</x:String>
+                                      <x:String>Disability Certificate (Intimation)</x:String>
+                                      <x:String>Disability Certificate (Submission)</x:String>
+                                      <x:String>Discharge Summary</x:String>
+                                      <x:String>Doctor Certificate</x:String>
+                                      <x:String>Drug Certificate</x:String>
+                                      <x:String>E I R</x:String>
+                                      <x:String>ECHS Card Copy</x:String>
+                                      <x:String>Emergency Letter (By Hospital)</x:String>
+                                      <x:String>Extended Stay Certificate</x:String>
+                                      <x:String>Extension Of Stay - Approval</x:String>
+                                      <x:String>Extension Of Stay - Permission</x:String>
+                                      <x:String>Feedback Form</x:String>
+                                      <x:String>Geo-Tagged Photo of Patient</x:String>
+                                      <x:String>Geo-Tagged Photo of Patient</x:String>
+                                      <x:String>Lab Reports</x:String>
+                                      <x:String>M L C</x:String>
+                                      <x:String>Medical Reports</x:String>
+                                      <x:String>Medicine Issue Slip</x:String>
+                                      <x:String>NA Certificate</x:String>
+                                      <x:String>Others</x:String>
+                                      <x:String>Others</x:String>
+                                      <x:String>Outer pack of Implants</x:String>
+                                      <x:String>Personal Application</x:String>
+                                      <x:String>Prescription Slip</x:String>
+                                      <x:String>Referral Letter (By Polyclinic)</x:String>
+                                      <x:String>Sanction Letter</x:String>
+                                      <x:String>Self Attested Proforma (Intimation)</x:String>
+                                      <x:String>Self Attested Proforma (Submission)</x:String>
+                                      <x:String>Service Specialist Recommendation</x:String>
+                                      <x:String>Stay Extension Documents</x:String>
+                                      <x:String>Supplimentary Justification Document</x:String>
+                                      <x:String>Supplimentary Sanction Document</x:String>
+                                      <x:String>Unlisted Procedure Approval</x:String>
+                                      <x:String>Unlisted Procedure Docs</x:String>
+                                      <x:String>Unlisted Procedure Permission</x:String>
+                                    </scg:List>
+                                  </uix:NSelectItem.Items>
+                                  <uix:NSelectItem.Target>
+                                    <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" ContentHash="yKQvbGjPRU6XZCMDa80XxQ" DesignTimeRectangle="603, 384, 344, 138" DesignTimeScaleFactor="1.25" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='uploadDocType' tableRow='2' tag='SELECT' /&gt;" Guid="594ba709-acef-4e77-a8c1-7ca78c966bbc" ImageBase64="" InformativeScreenshot="308173e07733109aebe79fa5fe136626.png" Reference="YmiKxvfyLUez7XOoWA_QcQ/GFcd4no_iEqbp_Nc5HILlA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="304, 384, 284, 138" ElementType="Text" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Select Document Type From The List' check:innerText='Select Document Type From The List' /&gt;" Guid="d894d9be-dc93-4248-a5fd-ccfe71d3b7d5" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NSelectItem.Target>
+                                </uix:NSelectItem>
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[CurrentFile.Name.ToString().Replace(&quot;28437632_S_&quot;, &quot;&quot;).Contains(&quot;REF_DS1&quot;)]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_8">
+                            <ui:IfElseIfBlock.Then>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,240.8" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NSelectItem DisplayName="Select Item 'Select Document Type Fr…'" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NSelectItem_6" Item="Delay Condonation Letter (Submission)" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                                  <uix:NSelectItem.Items>
+                                    <scg:List x:TypeArguments="x:String" Capacity="43">
+                                      <x:String>Bill Details</x:String>
+                                      <x:String>Consultation Notes</x:String>
+                                      <x:String>Contingent Bill</x:String>
+                                      <x:String>Copy of Cancelled Cheque</x:String>
+                                      <x:String>Covid Test Report</x:String>
+                                      <x:String>Death Certificate</x:String>
+                                      <x:String>Delay Condonation Letter (Intimation)</x:String>
+                                      <x:String>Delay Condonation Letter (Submission)</x:String>
+                                      <x:String>Disability Certificate (Intimation)</x:String>
+                                      <x:String>Disability Certificate (Submission)</x:String>
+                                      <x:String>Discharge Summary</x:String>
+                                      <x:String>Doctor Certificate</x:String>
+                                      <x:String>Drug Certificate</x:String>
+                                      <x:String>E I R</x:String>
+                                      <x:String>ECHS Card Copy</x:String>
+                                      <x:String>Emergency Letter (By Hospital)</x:String>
+                                      <x:String>Extended Stay Certificate</x:String>
+                                      <x:String>Extension Of Stay - Approval</x:String>
+                                      <x:String>Extension Of Stay - Permission</x:String>
+                                      <x:String>Feedback Form</x:String>
+                                      <x:String>Geo-Tagged Photo of Patient</x:String>
+                                      <x:String>Geo-Tagged Photo of Patient</x:String>
+                                      <x:String>Lab Reports</x:String>
+                                      <x:String>M L C</x:String>
+                                      <x:String>Medical Reports</x:String>
+                                      <x:String>Medicine Issue Slip</x:String>
+                                      <x:String>NA Certificate</x:String>
+                                      <x:String>Others</x:String>
+                                      <x:String>Others</x:String>
+                                      <x:String>Outer pack of Implants</x:String>
+                                      <x:String>Personal Application</x:String>
+                                      <x:String>Prescription Slip</x:String>
+                                      <x:String>Referral Letter (By Polyclinic)</x:String>
+                                      <x:String>Sanction Letter</x:String>
+                                      <x:String>Self Attested Proforma (Intimation)</x:String>
+                                      <x:String>Self Attested Proforma (Submission)</x:String>
+                                      <x:String>Service Specialist Recommendation</x:String>
+                                      <x:String>Stay Extension Documents</x:String>
+                                      <x:String>Supplimentary Justification Document</x:String>
+                                      <x:String>Supplimentary Sanction Document</x:String>
+                                      <x:String>Unlisted Procedure Approval</x:String>
+                                      <x:String>Unlisted Procedure Docs</x:String>
+                                      <x:String>Unlisted Procedure Permission</x:String>
+                                    </scg:List>
+                                  </uix:NSelectItem.Items>
+                                  <uix:NSelectItem.Target>
+                                    <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" ContentHash="yKQvbGjPRU6XZCMDa80XxQ" DesignTimeRectangle="603, 384, 344, 138" DesignTimeScaleFactor="1.25" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='uploadDocType' tableRow='2' tag='SELECT' /&gt;" Guid="594ba709-acef-4e77-a8c1-7ca78c966bbc" ImageBase64="" InformativeScreenshot="308173e07733109aebe79fa5fe136626.png" Reference="YmiKxvfyLUez7XOoWA_QcQ/GFcd4no_iEqbp_Nc5HILlA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target DesignTimeRectangle="304, 384, 284, 138" ElementType="Text" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Select Document Type From The List' check:innerText='Select Document Type From The List' /&gt;" Guid="d894d9be-dc93-4248-a5fd-ccfe71d3b7d5" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NSelectItem.Target>
+                                </uix:NSelectItem>
+                              </Sequence>
+                            </ui:IfElseIfBlock.Then>
+                          </ui:IfElseIfBlock>
+                        </sc:BindingList>
+                      </ui:IfElseIfV2.ElseIfs>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:IfElseIfV2.Then>
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,240.8" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NSelectItem DisplayName="Select Item 'Select Document Type Fr…'" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="Bill Details" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                            <uix:NSelectItem.Items>
+                              <scg:List x:TypeArguments="x:String" Capacity="43">
+                                <x:String>Bill Details</x:String>
+                                <x:String>Consultation Notes</x:String>
+                                <x:String>Contingent Bill</x:String>
+                                <x:String>Copy of Cancelled Cheque</x:String>
+                                <x:String>Covid Test Report</x:String>
+                                <x:String>Death Certificate</x:String>
+                                <x:String>Delay Condonation Letter (Intimation)</x:String>
+                                <x:String>Delay Condonation Letter (Submission)</x:String>
+                                <x:String>Disability Certificate (Intimation)</x:String>
+                                <x:String>Disability Certificate (Submission)</x:String>
+                                <x:String>Discharge Summary</x:String>
+                                <x:String>Doctor Certificate</x:String>
+                                <x:String>Drug Certificate</x:String>
+                                <x:String>E I R</x:String>
+                                <x:String>ECHS Card Copy</x:String>
+                                <x:String>Emergency Letter (By Hospital)</x:String>
+                                <x:String>Extended Stay Certificate</x:String>
+                                <x:String>Extension Of Stay - Approval</x:String>
+                                <x:String>Extension Of Stay - Permission</x:String>
+                                <x:String>Feedback Form</x:String>
+                                <x:String>Geo-Tagged Photo of Patient</x:String>
+                                <x:String>Geo-Tagged Photo of Patient</x:String>
+                                <x:String>Lab Reports</x:String>
+                                <x:String>M L C</x:String>
+                                <x:String>Medical Reports</x:String>
+                                <x:String>Medicine Issue Slip</x:String>
+                                <x:String>NA Certificate</x:String>
+                                <x:String>Others</x:String>
+                                <x:String>Others</x:String>
+                                <x:String>Outer pack of Implants</x:String>
+                                <x:String>Personal Application</x:String>
+                                <x:String>Prescription Slip</x:String>
+                                <x:String>Referral Letter (By Polyclinic)</x:String>
+                                <x:String>Sanction Letter</x:String>
+                                <x:String>Self Attested Proforma (Intimation)</x:String>
+                                <x:String>Self Attested Proforma (Submission)</x:String>
+                                <x:String>Service Specialist Recommendation</x:String>
+                                <x:String>Stay Extension Documents</x:String>
+                                <x:String>Supplimentary Justification Document</x:String>
+                                <x:String>Supplimentary Sanction Document</x:String>
+                                <x:String>Unlisted Procedure Approval</x:String>
+                                <x:String>Unlisted Procedure Docs</x:String>
+                                <x:String>Unlisted Procedure Permission</x:String>
+                              </scg:List>
+                            </uix:NSelectItem.Items>
+                            <uix:NSelectItem.Target>
+                              <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" ContentHash="yKQvbGjPRU6XZCMDa80XxQ" DesignTimeRectangle="603, 384, 344, 138" DesignTimeScaleFactor="1.25" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='uploadDocType' tableRow='2' tag='SELECT' /&gt;" Guid="594ba709-acef-4e77-a8c1-7ca78c966bbc" ImageBase64="" InformativeScreenshot="308173e07733109aebe79fa5fe136626.png" Reference="YmiKxvfyLUez7XOoWA_QcQ/GFcd4no_iEqbp_Nc5HILlA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                    <uix:Target DesignTimeRectangle="304, 384, 284, 138" ElementType="Text" FullSelectorArgument="&lt;webctrl id='medtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Select Document Type From The List' check:innerText='Select Document Type From The List' /&gt;" Guid="d894d9be-dc93-4248-a5fd-ccfe71d3b7d5" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NSelectItem.Target>
+                          </uix:NSelectItem>
+                        </Sequence>
+                      </ui:IfElseIfV2.Then>
+                    </ui:IfElseIfV2>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'No file chosen'" sap:VirtualizedContainerService.HintSize="1310.4,189.6" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="2494bef9-50a5-4ce9-8efc-ba3750a1ecc0" ContentHash="KK16PFn-aEOyiKtuEhCc7w" CvElementArea="960, 503, 110, 30" CvTextArea="970, 509, 217, 17" CvTextArgument="Choose File No file chosen" CvType="Button" DesignTimeRectangle="962, 505, 352, 26" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='medtable' tag='TABLE' /&gt;&lt;webctrl id='medicalReport' tag='INPUT' name='medicalReport' type='file' /&gt;" Guid="5feb5045-a009-4b9a-b497-b7fbf07bf8ce" InformativeScreenshot="ec48303063299608ea454847b9bb1e4d.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/3TqBMgaUt0mFgAe-LNn6DQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/claimlist.do' /&gt;" SearchSteps="Selector, CV" Version="V4" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CVScreenId="2494bef9-50a5-4ce9-8efc-ba3750a1ecc0" CvTextArea="1071, 509, 116, 16" CvTextArgument="No file chosen" CvType="Text" DesignTimeRectangle="1071, 508, 116, 17" ElementType="Text" Guid="50421022-2f87-4e24-85bd-f0e9462be1aa" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <uix:NCheckState DisplayName="Check App State 'Open'" sap:VirtualizedContainerService.HintSize="1310.4,49.6" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Timeout="5" Version="V4">
+                      <uix:NCheckState.IfExists>
+                        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.59999999999997,491.20000000000005" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'File &amp;name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="416,250.4" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="HardwareEvents" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Text="[CurrentFile.FullName]" Version="V4">
+                            <uix:NTypeInto.Target>
+                              <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="26ddc92d-9e33-46c3-bbe1-ee5211d54734" ContentHash="NewcVP9GFkO-KhN0oeyizA" CvElementArea="232, 499, 449, 31" CvType="InputBox" DesignTimeRectangle="230, 501, 450, 29" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' aaname='File name:' idx='1' /&gt;" Guid="5b5ff1cb-9b17-4e40-9b3d-7c4e65df5399" InformativeScreenshot="51460961d4f077f9503f6dd973e58594.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/rOh5h_QCCUOJ3XMpNojZjQ" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='*' title='Open' /&gt;" SearchSteps="Selector, CV" Version="V4" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CVScreenId="26ddc92d-9e33-46c3-bbe1-ee5211d54734" CvTextArea="155, 507, 69, 14" CvTextArgument="File name:" CvType="Text" DesignTimeRectangle="157, 505, 67, 20" ElementType="Text" FullSelectorArgument="&lt;wnd ctrlid='1090' title='File &amp;amp;name:' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1090' title='File &amp;amp;name:' check:text='File &amp;amp;name:' /&gt;" Guid="51d8f1d6-1979-4e81-b1a1-b6460e0ce158" SearchSteps="Selector, FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NTypeInto.Target>
+                          </uix:NTypeInto>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click '&amp;Open'" sap:VirtualizedContainerService.HintSize="416,180.8" sap2010:WorkflowViewState.IdRef="NClick_4" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8ea1a556-404d-4024-9688-62171bfd7f36" Version="V4">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="1b2c203e-191a-449a-8883-868317e022be" ContentHash="g86bEZl7ukeyteg4QE-L3w" CvElementArea="694, 535, 110, 33" CvTextArea="729, 545, 38, 17" CvTextArgument="Open" CvType="Button" DesignTimeRectangle="695, 537, 110, 33" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlid='1' aaname='Open' /&gt;" Guid="7f61cf98-8db7-455a-9949-0da60f034f4f" InformativeScreenshot="8146d40763a99530b3ae09b10a529f06.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/RZifaWO9MkW0KJV2lliypA" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Open' /&gt;" SearchSteps="Selector, CV" Version="V4" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CVScreenId="1b2c203e-191a-449a-8883-868317e022be" CvElementArea="819, 535, 110, 34" CvTextArea="850, 545, 46, 15" CvTextArgument="Cancel" CvType="Button" DesignTimeRectangle="820, 537, 110, 33" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlid='2' title='Cancel' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='2' title='Cancel' check:text='Cancel' /&gt;" Guid="af960f7d-f5c9-4a96-a49c-9bcbe877a6ad" SearchSteps="Selector, FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                        </Sequence>
+                      </uix:NCheckState.IfExists>
+                      <uix:NCheckState.IfNotExists>
+                        <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </uix:NCheckState.IfNotExists>
+                      <uix:NCheckState.Target>
+                        <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" ContentHash="LVgjgqckAUqxRHEJ-m7Qlw" DesignTimeRectangle="0, 0, 960, 600" DesignTimeScaleFactor="1.25" Guid="db51dd50-6a22-4901-890c-676852bed615" InformativeScreenshot="5bab59b07e8db703d484165731aca6c9.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/PtI3Xabq-kK4XuKNraHFEg" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='*' title='Open' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive" />
+                      </uix:NCheckState.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NCheckState>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachFileX.Body>
+            </ui:ForEachFileX>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" ContentHash="4Wp1pswl-UmAgoC4CCuO2g" IconBase64="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" InformativeScreenshot="e77baf980b1aec84eb916e1fc4d28580.jpg" Reference="YmiKxvfyLUez7XOoWA_QcQ/cJg0FmIPPEuS-X79m83Hhg" Selector="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" Title="Bill Processing Agency For ECHS" Url="https://www.echsbpa.utiitsl.com/ECHS/claimlist.do" Version="V1" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

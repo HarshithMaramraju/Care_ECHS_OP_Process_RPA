@@ -1,0 +1,311 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="BILL_PDF_Downloading" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_Bill_OP_no" Type="InArgument(x:String)" />
+    <x:Property Name="in_Counter" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_OP_Number" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>BILL_PDF_Downloading_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Numerics</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="BILL_PDF_Downloading" sap:VirtualizedContainerService.HintSize="1452.0000000000002,3296" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="Billed_Document_Date_format" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Assign - &quot;Billed_Document_Date_format&quot;" sap:VirtualizedContainerService.HintSize="1019.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[Billed_Document_Date_format]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("dd-MM-yyyy")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Chrome Bill Document" sap:VirtualizedContainerService.HintSize="1019.2,3159.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="91d8143e-6046-455c-a000-215ce0641641" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="985.6,2919.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="extractedBillNumber" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGetText DisplayName="Get Text 'Invoice# Number'" sap:VirtualizedContainerService.HintSize="952,189.6" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" TextString="[extractedBillNumber]" Version="V4">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" DesignTimeRectangle="681, 364, 291, 29" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl name='ctl00$ContentPlaceHolder1$txtBillNo' tableRow='3' tag='INPUT' type='text' /&gt;" Guid="1abbce23-f9b6-4e41-be34-6ed5bd41b9d9" ImageBase64="" InformativeScreenshot="59eeb5a3b347aa8c9c495c98741dee2a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="517, 366, 56, 17" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname=' S M T W T F S 48 49 50 51 52 53 Sno Service Name Provider Unit Charge Discount Patient Amt Payer Amt  Mode Amount Balance Date (dd/MM/YYYY) Bank Name Beneficiary Name Reference No Description/Card Holder Name Card Swiping Value   S M T W T F S 48 49 50 51 52 53  S M T W T F S 48 49 50 51 52 1 Time Picker' tableCol='39' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Invoice#' tableRow='3' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname=' S M T W T F S 48 49 50 51 52 53 Sno Service Name Provider Unit Charge Discount Patient Amt Payer Amt  Mode Amount Balance Date (dd/MM/YYYY) Bank Name Beneficiary Name Reference No Description/Card Holder Name Card Swiping Value   S M T W T F S 48 49 50 51 52 53  S M T W T F S 48 49 50 51 52 1 Time Picker' tag='TABLE' /&gt;&lt;webctrl aaname='Invoice#' type='' tag='A' class='' check:innerText='Invoice#' /&gt;" Guid="674a5371-4923-43bb-89aa-4bb88b7b4a53" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NGetText>
+            <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[in_OP_Number.Trim&lt;&gt;extractedBillNumber.Trim]" DisplayName="While-Iterate with in invoice number till it matches" sap:VirtualizedContainerService.HintSize="952,387.2" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_2">
+              <ui:InterruptibleWhile.Body>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,240.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGetText DisplayName="Get Text 'Invoice#'" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" TextString="[extractedBillNumber]" Version="V4">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" DesignTimeRectangle="681, 364, 291, 29" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl name='ctl00$ContentPlaceHolder1$txtBillNo' tableRow='3' tag='INPUT' type='text' /&gt;" Guid="1abbce23-f9b6-4e41-be34-6ed5bd41b9d9" ImageBase64="" InformativeScreenshot="59eeb5a3b347aa8c9c495c98741dee2a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="517, 366, 56, 17" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname=' S M T W T F S 48 49 50 51 52 53 Sno Service Name Provider Unit Charge Discount Patient Amt Payer Amt  Mode Amount Balance Date (dd/MM/YYYY) Bank Name Beneficiary Name Reference No Description/Card Holder Name Card Swiping Value   S M T W T F S 48 49 50 51 52 53  S M T W T F S 48 49 50 51 52 1 Time Picker' tableCol='39' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Invoice#' tableRow='3' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname=' S M T W T F S 48 49 50 51 52 53 Sno Service Name Provider Unit Charge Discount Patient Amt Payer Amt  Mode Amount Balance Date (dd/MM/YYYY) Bank Name Beneficiary Name Reference No Description/Card Holder Name Card Swiping Value   S M T W T F S 48 49 50 51 52 53  S M T W T F S 48 49 50 51 52 1 Time Picker' tag='TABLE' /&gt;&lt;webctrl aaname='Invoice#' type='' tag='A' class='' check:innerText='Invoice#' /&gt;" Guid="674a5371-4923-43bb-89aa-4bb88b7b4a53" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                  </uix:NGetText>
+                </Sequence>
+              </ui:InterruptibleWhile.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InterruptibleWhile>
+            <uix:NClick ActivateBefore="True" DelayAfter="5" DisplayName="Click 'Print'" sap:VirtualizedContainerService.HintSize="952,189.6" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" Version="V4">
+              <uix:NClick.ClickType>
+                <InArgument x:TypeArguments="uix:NClickType">
+                  <Literal x:TypeArguments="uix:NClickType" sap2010:WorkflowViewState.IdRef="Literal`1_1" />
+                </InArgument>
+              </uix:NClick.ClickType>
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" DesignTimeRectangle="1787, 194, 56, 26" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl tableRow='3' tag='INPUT' type='submit' aaname='Print (Ctrl + F6)' /&gt;" Guid="ea8b8ad4-71b5-4bc5-bbc1-3c0066536010" ImageBase64="" InformativeScreenshot="3238156c090fead7f334823fa08cddce.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="1847, 194, 58, 26" ElementType="Button" FullSelectorArgument="&lt;webctrl aaname=' S M T W T F S 48 49 50 51 52 53 Sno Service Name Provider Unit Charge Discount Patient Amt Payer Amt  Mode Amount Balance Date (dd/MM/YYYY) Bank Name Beneficiary Name Reference No Description/Card Holder Name Card Swiping Value   S M T W T F S 48 49 50 51 52 53  S M T W T F S 48 49 50 51 52 1 Time Picker' tableCol='39' tableRow='1' tag='TABLE' /&gt;&lt;webctrl name='ctl00$ContentPlaceHolder1$btnSaveConfirm' tableRow='3' tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname=' S M T W T F S 48 49 50 51 52 53 Sno Service Name Provider Unit Charge Discount Patient Amt Payer Amt  Mode Amount Balance Date (dd/MM/YYYY) Bank Name Beneficiary Name Reference No Description/Card Holder Name Card Swiping Value   S M T W T F S 48 49 50 51 52 53  S M T W T F S 48 49 50 51 52 1 Time Picker' tag='TABLE' /&gt;&lt;webctrl name='ctl00$ContentPlaceHolder1$btnSaveConfirm' class='btn btn-primary' tag='INPUT' type='submit' aaname='Save (Ctrl + F3)' check:text='Save' /&gt;" Guid="ce2372ff-16a9-4d27-b963-c208c2c2a660" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Download Button'" sap:VirtualizedContainerService.HintSize="952,189.6" sap2010:WorkflowViewState.IdRef="NClick_8" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" ContentHash="HxYE1sti60qHwMT_2ek8Jw" DesignTimeRectangle="1776, 176, 28, 36" DesignTimeScaleFactor="1.25" Guid="82a23601-3574-4bc5-8a8c-062d3e9ec4a4" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAkCAYAAACaJFpUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADbSURBVFhH7dPRCcIwEMbxzuSD0BUEwRmE4g4iDiF2CNEl1CnqFpkg8gUOjgtnLpL6IPfwJyVp+6s27RbLPv6yTk7MnYPNczBrtd7E7bBLo1yzVA2ezmMMIcT94ZitWXIwy8FSJvD+eCYIxxLEiHXrZ1IEcaNpeiUEGAcRjlEzEOFDJ5RG/CrCsC6v0TKBiKO8GgyZQSTRWgxVgYjQbzCkgnhHl+stm0faBsH5uE7O81SQNoic/xT93XKep4J8V1qzPKQK4hujm1jD+aV3q4Jz5WDzHGyeg837f/ANcqIHwSzvqwYAAAAASUVORK5CYII=" InformativeScreenshot="10e0948375b91f0205b80b7d13ee35e1.png" Reference="YmiKxvfyLUez7XOoWA_QcQ/6hIg9m5WdkaUsyL5Kr3Ftw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Image" TargetType="ImageBased" Version="V4" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NCheckState DisplayName="Check App State 'Save As'" sap:VirtualizedContainerService.HintSize="952,1150.4" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" Timeout="5" Version="V4">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,860" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'File name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="416,250.4" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="HardwareEvents" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" Text="[in_Config(&quot;EveryDayFolder&quot;).ToString+Today.Date.ToString(&quot;dd&quot;)+&quot;\&quot;+In_Bill_OP_no.Replace(&quot;/&quot;,&quot;&quot;).Trim+&quot;\&quot;+&quot;BILL&quot;+in_Counter.ToString]" Version="V4">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" ContentHash="Xc5fimLExEKmKCOYYiVfFg" DesignTimeRectangle="166, 402, 779, 28" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;wnd aaname='File name:' /&gt;" Guid="a9ea044a-0bd9-491f-b66b-243870cf0744" ImageBase64="" InformativeScreenshot="85a1c8f276bc6ca3a165eb26f7327227.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/5Mt1m2ws7kqcDaxAOgeKXQ" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='*' title='Save As' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="22, 402, 144, 28" ElementType="Text" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' automationid='' check:text='File name:' /&gt;" Guid="999fe158-ae69-475a-a5c4-9a4a9d65a8fe" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click '&amp;Save'" sap:VirtualizedContainerService.HintSize="416,189.6" sap2010:WorkflowViewState.IdRef="NClick_9" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" DesignTimeRectangle="695, 537, 110, 33" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlid='*' title='&amp;amp;Save' aaname='Save' /&gt;" Guid="004c5728-3af2-481d-a0ac-189c8a5f78c5" ImageBase64="" InformativeScreenshot="22bec7ddcfefdce8e9e739a76c87a342.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='*' title='Save As' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="820, 537, 110, 33" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlid='2' title='Cancel' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='2' title='Cancel' check:text='Cancel' /&gt;" Guid="901a01d3-8b80-402b-803f-b30549c4e648" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,176" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;File Saved Successfully BILL&quot;+in_Counter.ToString]" />
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Close'" sap:VirtualizedContainerService.HintSize="416,182.4" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" ContentHash="uBgBcvPQxUO39k9eGKLN8A" DesignTimeRectangle="1380, 195, 37, 27" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl class='rwCloseButton' tableRow='1' tag='A' aaname='Close' /&gt;" Guid="222e87ee-e75e-49d1-b376-bbd8487781b3" ImageBase64="" InformativeScreenshot="c2cc9160620f477fc30b62eaec92f1a1.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/bnCkxhtFykCzn2ei4QUE8A" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" DesignTimeRectangle="0, 0, 960, 600" DesignTimeScaleFactor="1.25" Guid="ecb321e0-dfc0-4ad3-b6e3-d6bf648fe7e2" ImageBase64="" InformativeScreenshot="e36ae8502b7cdd99a493a8ca5d169cda.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='*' title='Save As' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Downloads'" sap:VirtualizedContainerService.HintSize="952,189.6" sap2010:WorkflowViewState.IdRef="NClick_12" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" CVScreenId="4997ed2c-a442-4324-b358-e4ca8de484dd" DesignTimeRectangle="1676, 66, 43, 43" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;ctrl name='Downloads' role='push button' /&gt;" Guid="966892ea-6cfb-4417-b08a-986347a972d6" InformativeScreenshot="fa4601b7c22fde8139d61e732b61ada4.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='CARE*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click-'Keep'" sap:VirtualizedContainerService.HintSize="952,189.6" sap2010:WorkflowViewState.IdRef="NClick_13" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" DesignTimeRectangle="283, 83, 46, 22" DesignTimeScaleFactor="1.25" Guid="e8728f73-f624-42d1-b91d-b03a678a0fab" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC4AAAAWCAYAAAC/kK73AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJDSURBVFhH7ZU9a9tAGMfzTTR4CCZLhgx16FKCoVoypKQEY+Khg4vx0IKhXmSwoCA0ZLBBAhtjKg/yIDwUihctRoMgX0CbN2/avHn5h7vTSdZbIzrEuHj4D7p7nrvfc8+LzgRBwDHqLLlwLDqBv7X+I3DJw9zdYaz39tbraFq7cL2U9DmACoBfo6r7dG1mmrhM2h9Ir4JfSh5m7g7zpYNqOX3AofRX8NKjgzGBXnlo3CSdP+KD7EFbsRKauz4G+iiWkZI4QtfyWeAkY0sPzU/X4T7PpCq3UDMiu6nl4C51X1z54IYDlUJt0HmMLmOKymds2mjKC3TM4HsQlNiNyfxXa0jKAk3lGQP67aFWiYNPbZ/CtmUb/eWWPcRvG++TbEXAZyt2wMxapOu6ssAT2TN+7TXqEH0K9oxbQYA4If4bdG4jvwtlTc8cKPcx8Pg539FZsgf7JqaBuXLBx7oZHJAxSQKbbHloCD9C3yzx/glLRYoz5K0XBO9F6Xa3UKV62mYywjuxlVAd50IPXZv4rdFO7bdwVWGllwf42WB39r+mgYuBkwbjDer66PJaF21oZM3OnzTs8h2e5L2AEwprfDKMMloeoh8E3Qx6IUuvghOFIzGcLveomUET2R66pPlkG5Ll4yd/vQce8BaawRq4rXvQLBvVBHhoozhQKXQimAwVAid/zgYH5fO83EJtssF0r3bpuHuIzjr/8gcqnxI0cB+aPsJFAlxVyNjkdls6Vq9yMpkP/obKq/EiOoH/i07gx6SjBX8BhKfPTIeG5X4AAAAASUVORK5CYII=" InformativeScreenshot="757d6342f2cc4306807614809b1ce214.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Recent download history' /&gt;" SearchSteps="Image" TargetType="ImageBased" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click-'Close Downloaded POPUP'" sap:VirtualizedContainerService.HintSize="952,189.6" sap2010:WorkflowViewState.IdRef="NClick_14" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" ContentHash="89yz_9VMZka2ZFLA7vOixw" DesignTimeRectangle="354, 22, 38, 35" DesignTimeScaleFactor="1.25" Guid="22b5025e-1ec0-452b-851f-643cf7113af0" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACYAAAAjCAYAAAD48HgdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAQ1SURBVFhH7ZfZT1NZGMD9T9gRQagIacsAyqYsdVeC2wgotXUHt6qhElARdcYZQaNodW6tiom4RFGoCi5F6/Lkg+vLZKKT0bjG3Xn5Jt9Jzsm955x7exszCZnMwy+k91v6o7ff6XeHxcTEwFBkGH9hqPDfEktKToHy6Qtg5ZYjsD1wF/b1/AFHBz/Db5dfQcfJR9Cyrx/mLm6G7JxCodYsUYklJg2H2vptoAy8gePhv03RemgQcosmCL0iYVqsoGwGHOj9U/OmR0OfoE0Jg2dHN7g87VDfokDT7j7Ye/Z3QbBhkx/iExKFvnqYEqucvxaODX5hb4K3qsgxE+LiE4RcSvooK1QvbwWl/y2ra1NuQerIUUKujIhi06tXscb+K++gbGqtkGNESmoG+RRpj10n7kNySqqQx2MoVlhWCcdufCUN8Tba8sYJOWaIjYuD+k1+Jte0J0iu8XlqdMUSEpOg8/xT0ujI9Y9gyx8v5ESLt/08k6uqWy/E1eiK1SzfyppMm9egiTkcDiFfRkVFheY1TvXu009IT1/fc0gaPkKooUjFYmNj4dCll6RBe/dDTczpdEI4HIbGxkahTo3X6yV5dXV1muuTZi1m//BM5wahjiIVK6qoYsUTqtyaWHZ2NvT09BjK4XWMYx7m8/GOU49Jbzzj+BhFKoZnDhYGrr2Xnj34Zr29vVK5SFLIwrW/kv5dN7/BSIs8Ryq2s+seKdx++I4Qo1itVibn8XjINfyLr/G6nhRSOrWG3RG940cqtv/CM1K0/ufTQkyN3W6HYDBIZHw+H5NCaT5XjTW3mInhOcnHEakY/tRgkXtdhxDjycnJgVAoRKTwr81mE3J4cDqp2LxlrUIckYrRiVy68YAQ42lubiZSFHzN5/CMSLMwsdkurxBHpGJ4RJBbufOMEFOj/qKXl5dHnFaKNa+EifFTT5GKoRAW4VjzMYps+oymVc20H+uZWJa9QIgjUjHcJmjhaOsYIW40fbJp5aH/uK/vLyFGkYplWvOZ2BJvpybmdrsjTh8OAJVzuVyaWFpGFgSufSC9V2/tEmopUjFk8/6rpBgnVH0IWiwWCAQCulIUnFZFUUi++jo9vJEfCrS/pWp0xez541kDlIyLjxdyoqVk4hy2RjXuOifE1eiKIYs27GFyuE/x8WjABxP6rOALPtf9KaIYiuEy13owxORwtzdap/XIK57Ezkb8xApKZwg5PIZiSGp6JrR3P2By2/y3Ib9kspAnA1do55pfyKMdrTdaddREFEOSU9KgpXOANUdwZVmw8icodsyCLNtYsoWkpY+G3EIHWSxx4g5efMHy/QNvoXRKtdBbD1NiCN7WOe4m8lCrFjQD7vjRPvyaFqPgpze/YQdbjfRQ+l+Tg9TM90lG1GJqMjJtZJ+qrF0DNSvaYLZ7I1md8Tv4vcfLd4n9m/wvFi1DVuwfvVcJXi1w0BEAAAAASUVORK5CYII=" InformativeScreenshot="977463747ae99da47953a09c8ba6decc.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/FARqpiE9_ESyc5RZgp35bg" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Recent download history' /&gt;" SearchSteps="Image" TargetType="ImageBased" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Invoice# after File Save'" sap:VirtualizedContainerService.HintSize="952,182.4" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="91d8143e-6046-455c-a000-215ce0641641" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="carehis.carehospitals.com/EMRBILLING/OPBill.aspx" ContentHash="pNyhFTKKLkaSMN-paH_PRg" DesignTimeRectangle="702, 413, 56, 17" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Invoice#' tableRow='3' tag='A' /&gt;" Guid="5febbd6d-15f8-477b-9913-1543c93122b9" ImageBase64="" InformativeScreenshot="466ae5ed6671c0f2d54a5ef9cbe402fd.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/ur3a9oT8aE6kLBSMkhU5iw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="684, 411, 138, 21" ElementType="Button" FullSelectorArgument="&lt;webctrl aaname=' S M T W T F S 48 49 50 51 52 1 Mode Amount Balance Date (dd/MM/YYYY) Bank Name Beneficiary Name Reference No Description/Card Holder Name Card Swiping Value   S M T W T F S 48 49 50 51 52 53  S M T W T F S 48 49 50 51 52 1 Time Picker' tableCol='39' tableRow='1' tag='TABLE' /&gt;&lt;webctrl css-selector='body&amp;gt;form&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='6' tableCol='1' tableRow='3' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname=' S M T W T F S 48 49 50 51 52 1 Mode Amount Balance Date (dd/MM/YYYY) Bank Name Beneficiary Name Reference No Description/Card Holder Name Card Swiping Value   S M T W T F S 48 49 50 51 52 53  S M T W T F S 48 49 50 51 52 1 Time Picker' tag='TABLE' /&gt;&lt;webctrl type='' class='col-md-4 col-sm-4 text-left pull-left' aaname=' &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;&amp;#x9;' tag='DIV' check:innerText='Invoice#' /&gt;" Guid="cd7a0c7d-8c2d-4555-8c09-005f73377908" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1616, 876" BrowserType="Chrome" ContentHash="QayJ3N7kMUez3TdbnFaEOw" IconBase64="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" InformativeScreenshot="d9e7d0ba78bb72e889640cd2ff96b29a.jpg" Reference="YmiKxvfyLUez7XOoWA_QcQ/2mBdbtFvOkavqTfE7uJ6Jw" Selector="&lt;html app='chrome.exe' title='*' /&gt;" Title="CARE Hospital Banjara Hills" Url="http://carehis.carehospitals.com:5000/EMRBILLING/IPBill.aspx?MPG=P310&amp;Mpg=P310&amp;irtrf=9169ACF5-DBF2-402D-AA96-16B9CD2FE183&amp;OP=False_0_1_4_2_13_2_11923_RPA_11_0_CARE%Hospital%EF%BF%BDnjara%Hills_0_21_310" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

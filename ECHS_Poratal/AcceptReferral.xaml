@@ -1,0 +1,1219 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AcceptReferral" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_ReferralFromPolyclinic" Type="InArgument(x:String)" />
+    <x:Property Name="in_ReferralNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_ServiveNumber" Type="InArgument(x:String)" />
+    <x:Property Name="out_generatedClaimID" Type="OutArgument(x:String)" />
+    <x:Property Name="out_IsIdAssigned" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="out_wrongPolyclinic" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="in_folderName" Type="InArgument(x:String)" />
+    <x:Property Name="out_ClaimIDAlredyAssignedToAnotherHospital_DT" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_isClaimIIdAssignedToAnotherHospital" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="out_ExtractedClaimID" Type="OutArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>AcceptReferral_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.StudioWeb.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="AcceptReferral" sap:VirtualizedContainerService.HintSize="1452.0000000000002,4708.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(of String, String)From{{&quot;0210&quot;,&quot;Anantapur [0210]&quot;},{&quot;0057&quot;,&quot;Bidar (RC Hyderabad) [0057]&quot;},{&quot;0205&quot;,&quot;Chittur [0205]&quot;},{&quot;0209&quot;,&quot;Eluru [0209]&quot;},{&quot;0206&quot;,&quot;Giddalur [0206]&quot;},{&quot;0207&quot;,&quot;Golconda [0207]&quot;},{&quot;0203&quot;,&quot;Guntur [0203]&quot;},{&quot;0212&quot;,&quot;Kadapa [0212]&quot;},{&quot;0214&quot;,&quot;Karimnagar [0214]&quot;},{&quot;0216&quot;,&quot;Khammam [0216]&quot;},{&quot;0211&quot;,&quot;Kurnool [0211]&quot;},{&quot;0217&quot;,&quot;Mehbubnagar [0217]&quot;},{&quot;0213&quot;,&quot;Nellore [0213]&quot;},{&quot;0215&quot;,&quot;Secunderabad 2nd(Bowenpally) [0215]&quot;},{&quot;0204&quot;,&quot;Secunderabad Main [0204]&quot;},{&quot;0208&quot;,&quot;Vijayawada [0208]&quot;}}]" Name="dropDown" />
+      <Variable x:TypeArguments="x:Boolean" Name="is_ClaimIDAssignedToAnotherHospital" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:BuildDataTable DataTable="[out_ClaimIDAlredyAssignedToAnotherHospital_DT]" DisplayName="Build Data Table-claim ID assigned to another hospital" sap:VirtualizedContainerService.HintSize="1121.6,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Bill_x0020_Number&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Status&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Chrome Bill Processing Agency For ECHS-Main" sap:VirtualizedContainerService.HintSize="1121.6,4593.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="IfNotOpen" ScopeGuid="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1088,4353.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Clicks Intimation" ClickType="Single" DisplayName="Click 'Intimation'" sap:VirtualizedContainerService.HintSize="1054.4,220.8" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/login.do" CVScreenId="dfa45f04-b241-4799-a554-7887f9114a21" ContentHash="0qXpBWjcQEas3ALAOyrCSg" CvElementArea="9, 349, 288, 38" CvTextArea="14, 354, 83, 15" CvTextArgument="Intimation" CvType="Button" DesignTimeRectangle="10, 347, 288, 40" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='li_0' tag='A' aaname='Intimation' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='li_0' tag='A' aaname='Intimation' type='' class='accor_open' check:text='Intimation' /&gt;" Guid="576e77dc-09b1-4a3e-88b5-180cffa16c29" InformativeScreenshot="5d380172a4e554a58137d331871a0b58.png" Reference="8EQj56H3V0ez2o2LfAkxpA/2Pt0daoaU0OaXfUzejUAQw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/login.do' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="dfa45f04-b241-4799-a554-7887f9114a21" CvTextArea="122, 322, 62, 20" CvTextArgument="Menu" CvType="Text" DesignTimeRectangle="10, 316, 288, 31" FullSelectorArgument="&lt;webctrl tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Menu                                                                                                                                                                                         ' check:innerText='Menu' /&gt;" Guid="52934d64-1fc9-465c-941e-7752550bf62f" SearchSteps="Selector, FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Clicks Acept Referral" ClickType="Single" DisplayName="Click 'Accept Referral'" sap:VirtualizedContainerService.HintSize="1054.4,220.8" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/login.do" CVScreenId="db39f726-4693-4dfe-a020-090debcd2df5" ContentHash="NUJM9n6hhkqsW6EqMiFsTA" CvTextArea="12, 541, 108, 17" CvTextArgument="Accept Referral" CvType="Text" DesignTimeRectangle="10, 533, 288, 26" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Accept Referral' tag='A' parentclass='menulink' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Accept Referral' tag='A' parentclass='menulink' type='' class='' check:text='Accept Referral' /&gt;" Guid="f44349ef-ad8b-4f56-8217-245b2e099e77" InformativeScreenshot="8e5b47ded17660430b9186383c41aaf4.png" IsResponsive="True" Reference="8EQj56H3V0ez2o2LfAkxpA/38UlAS0bz0Cf4ndmXAFBRw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/login.do' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="db39f726-4693-4dfe-a020-090debcd2df5" CvTextArea="14, 514, 200, 18" CvTextArgument="Need More Info [Emergency]" CvType="Text" DesignTimeRectangle="10, 507, 288, 25" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Need More Info [Emergency]' parentid='0' tableRow='6' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Need More Info [Emergency]' parentid='0' type='' tag='A' class='' check:innerText='Need More Info [Emergency]' /&gt;" Guid="9cbf9b0a-91a1-4fdb-9b22-b86ca82a5aca" SearchSteps="Selector, FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1054.4,56.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Navigated to Accept Referral&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+            <uix:NSelectItem DisplayName="Select Item 'Polyclinic'" sap:VirtualizedContainerService.HintSize="1054.4,189.6" sap2010:WorkflowViewState.IdRef="NSelectItem_8" Item="[dropDown(in_ReferralNumber.Substring(0,4))]" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="17">
+                  <x:String>Select Dispensary</x:String>
+                  <x:String>Anantapur [0210]</x:String>
+                  <x:String>Bidar (RC Hyderabad) [0057]</x:String>
+                  <x:String>Chittur [0205]</x:String>
+                  <x:String>Eluru [0209]</x:String>
+                  <x:String>Giddalur [0206]</x:String>
+                  <x:String>Golconda [0207]</x:String>
+                  <x:String>Guntur [0203]</x:String>
+                  <x:String>Kadapa [0212]</x:String>
+                  <x:String>Karimnagar [0214]</x:String>
+                  <x:String>Khammam [0216]</x:String>
+                  <x:String>Kurnool [0211]</x:String>
+                  <x:String>Mehbubnagar [0217]</x:String>
+                  <x:String>Nellore [0213]</x:String>
+                  <x:String>Secunderabad 2nd(Bowenpally) [0215]</x:String>
+                  <x:String>Secunderabad Main [0204]</x:String>
+                  <x:String>Vijayawada [0208]</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="637, 271, 282, 20" DesignTimeScaleFactor="1" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='referredDispensary' tableRow='4' tag='SELECT' innertext='Select Dispensary Anantapur [0210] Bidar (RC Hyderabad) [0057] Chittur [0205] Eluru [0209] Giddalur [0206] Golconda [0207] Guntur [0203] Kadapa [0212] Karimnagar [0214] Khammam [0216] Kurnool [0211] Mehbubnagar [0217] Nellore [0213] Secunderabad 2nd(Bowenpally) [0215] Secunderabad Main [0204] Vijayawada [0208]' parentname='ClaimIntimation' /&gt;" Guid="884f68ef-bad9-4976-9d86-a42fb0af4b17" ImageBase64="" InformativeScreenshot="ba0d85a8efd981f97f563e73d840ba40.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/divert.do' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="201, 269, 426, 20" ElementType="Text" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tbl_main' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Polyclinic' check:innerText='Polyclinic' /&gt;" Guid="399efb80-8b8d-405b-bcc5-641f86fff54f" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1054.4,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:IfElseIfV2 Condition="[in_ReferralFromPolyclinic=&quot;Cuddapah&quot;]" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
+                    <ui:IfElseIfV2.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,240.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NSelectItem DisplayName="Select Item 'Polyclinic'" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NSelectItem_6" Item="[in_ReferralFromPolyclinic+&quot; [&quot;+in_ReferralNumber.Substring(0,4)+&quot;]&quot;]" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                          <uix:NSelectItem.Items>
+                            <scg:List x:TypeArguments="x:String" Capacity="17">
+                              <x:String>Select Dispensary</x:String>
+                              <x:String>Anantapur [0210]</x:String>
+                              <x:String>Bidar (RC Hyderabad) [0057]</x:String>
+                              <x:String>Chittur [0205]</x:String>
+                              <x:String>Eluru [0209]</x:String>
+                              <x:String>Giddalur [0206]</x:String>
+                              <x:String>Golconda [0207]</x:String>
+                              <x:String>Guntur [0203]</x:String>
+                              <x:String>Kadapa [0212]</x:String>
+                              <x:String>Karimnagar [0214]</x:String>
+                              <x:String>Khammam [0216]</x:String>
+                              <x:String>Kurnool [0211]</x:String>
+                              <x:String>Mehbubnagar [0217]</x:String>
+                              <x:String>Nellore [0213]</x:String>
+                              <x:String>Secunderabad 2nd(Bowenpally) [0215]</x:String>
+                              <x:String>Secunderabad Main [0204]</x:String>
+                              <x:String>Vijayawada [0208]</x:String>
+                            </scg:List>
+                          </uix:NSelectItem.Items>
+                          <uix:NSelectItem.Target>
+                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" ContentHash="OMn2zr2H6EaEnRR9u_7gZA" DesignTimeRectangle="637, 271, 282, 20" DesignTimeScaleFactor="1" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='referredDispensary' tableRow='4' tag='SELECT' innertext='Select Dispensary Anantapur [0210] Bidar (RC Hyderabad) [0057] Chittur [0205] Eluru [0209] Giddalur [0206] Golconda [0207] Guntur [0203] Kadapa [0212] Karimnagar [0214] Khammam [0216] Kurnool [0211] Mehbubnagar [0217] Nellore [0213] Secunderabad 2nd(Bowenpally) [0215] Secunderabad Main [0204] Vijayawada [0208]' parentname='ClaimIntimation' /&gt;" Guid="884f68ef-bad9-4976-9d86-a42fb0af4b17" ImageBase64="" InformativeScreenshot="ba0d85a8efd981f97f563e73d840ba40.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/sH4eG4iV00aZ1mGZKE-vpQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/divert.do' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="201, 269, 426, 20" ElementType="Text" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tbl_main' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Polyclinic' check:innerText='Polyclinic' /&gt;" Guid="399efb80-8b8d-405b-bcc5-641f86fff54f" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NSelectItem.Target>
+                        </uix:NSelectItem>
+                      </Sequence>
+                    </ui:IfElseIfV2.Else>
+                    <ui:IfElseIfV2.ElseIfs>
+                      <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                        <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_ReferralFromPolyclinic=&quot;Secunderabad&quot;]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
+                          <ui:IfElseIfBlock.Then>
+                            <Sequence sap2010:Annotation.AnnotationText="Clicks Sec Main if Secundrabad Main" DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,272" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NSelectItem DisplayName="Select Item 'Polyclinic'" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NSelectItem_5" Item="Secunderabad Main [0204]" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                                <uix:NSelectItem.Items>
+                                  <scg:List x:TypeArguments="x:String" Capacity="17">
+                                    <x:String>Select Dispensary</x:String>
+                                    <x:String>Anantapur [0210]</x:String>
+                                    <x:String>Bidar (RC Hyderabad) [0057]</x:String>
+                                    <x:String>Chittur [0205]</x:String>
+                                    <x:String>Eluru [0209]</x:String>
+                                    <x:String>Giddalur [0206]</x:String>
+                                    <x:String>Golconda [0207]</x:String>
+                                    <x:String>Guntur [0203]</x:String>
+                                    <x:String>Kadapa [0212]</x:String>
+                                    <x:String>Karimnagar [0214]</x:String>
+                                    <x:String>Khammam [0216]</x:String>
+                                    <x:String>Kurnool [0211]</x:String>
+                                    <x:String>Mehbubnagar [0217]</x:String>
+                                    <x:String>Nellore [0213]</x:String>
+                                    <x:String>Secunderabad 2nd(Bowenpally) [0215]</x:String>
+                                    <x:String>Secunderabad Main [0204]</x:String>
+                                    <x:String>Vijayawada [0208]</x:String>
+                                  </scg:List>
+                                </uix:NSelectItem.Items>
+                                <uix:NSelectItem.Target>
+                                  <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="637, 271, 282, 20" DesignTimeScaleFactor="1" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='referredDispensary' tableRow='4' tag='SELECT' innertext='Select Dispensary Anantapur [0210] Bidar (RC Hyderabad) [0057] Chittur [0205] Eluru [0209] Giddalur [0206] Golconda [0207] Guntur [0203] Kadapa [0212] Karimnagar [0214] Khammam [0216] Kurnool [0211] Mehbubnagar [0217] Nellore [0213] Secunderabad 2nd(Bowenpally) [0215] Secunderabad Main [0204] Vijayawada [0208]' parentname='ClaimIntimation' /&gt;" Guid="884f68ef-bad9-4976-9d86-a42fb0af4b17" ImageBase64="" InformativeScreenshot="ba0d85a8efd981f97f563e73d840ba40.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/divert.do' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target DesignTimeRectangle="201, 269, 426, 20" ElementType="Text" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tbl_main' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Polyclinic' check:innerText='Polyclinic' /&gt;" Guid="399efb80-8b8d-405b-bcc5-641f86fff54f" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NSelectItem.Target>
+                              </uix:NSelectItem>
+                            </Sequence>
+                          </ui:IfElseIfBlock.Then>
+                        </ui:IfElseIfBlock>
+                        <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_ReferralFromPolyclinic=&quot;Secunderabad (2nd)&quot;]" DisplayName="If else if block" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_3">
+                          <ui:IfElseIfBlock.Then>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,240.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NSelectItem DisplayName="Select Item 'Polyclinic'" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NSelectItem_7" Item="Secunderabad 2nd(Bowenpally) [0215]" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                                <uix:NSelectItem.Items>
+                                  <scg:List x:TypeArguments="x:String" Capacity="17">
+                                    <x:String>Select Dispensary</x:String>
+                                    <x:String>Anantapur [0210]</x:String>
+                                    <x:String>Bidar (RC Hyderabad) [0057]</x:String>
+                                    <x:String>Chittur [0205]</x:String>
+                                    <x:String>Eluru [0209]</x:String>
+                                    <x:String>Giddalur [0206]</x:String>
+                                    <x:String>Golconda [0207]</x:String>
+                                    <x:String>Guntur [0203]</x:String>
+                                    <x:String>Kadapa [0212]</x:String>
+                                    <x:String>Karimnagar [0214]</x:String>
+                                    <x:String>Khammam [0216]</x:String>
+                                    <x:String>Kurnool [0211]</x:String>
+                                    <x:String>Mehbubnagar [0217]</x:String>
+                                    <x:String>Nellore [0213]</x:String>
+                                    <x:String>Secunderabad 2nd(Bowenpally) [0215]</x:String>
+                                    <x:String>Secunderabad Main [0204]</x:String>
+                                    <x:String>Vijayawada [0208]</x:String>
+                                  </scg:List>
+                                </uix:NSelectItem.Items>
+                                <uix:NSelectItem.Target>
+                                  <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" ContentHash="OMn2zr2H6EaEnRR9u_7gZA" DesignTimeRectangle="637, 271, 282, 20" DesignTimeScaleFactor="1" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='referredDispensary' tableRow='4' tag='SELECT' innertext='Select Dispensary Anantapur [0210] Bidar (RC Hyderabad) [0057] Chittur [0205] Eluru [0209] Giddalur [0206] Golconda [0207] Guntur [0203] Kadapa [0212] Karimnagar [0214] Khammam [0216] Kurnool [0211] Mehbubnagar [0217] Nellore [0213] Secunderabad 2nd(Bowenpally) [0215] Secunderabad Main [0204] Vijayawada [0208]' parentname='ClaimIntimation' /&gt;" Guid="884f68ef-bad9-4976-9d86-a42fb0af4b17" ImageBase64="" InformativeScreenshot="ba0d85a8efd981f97f563e73d840ba40.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/sH4eG4iV00aZ1mGZKE-vpQ" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/divert.do' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target DesignTimeRectangle="201, 269, 426, 20" ElementType="Text" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tbl_main' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Polyclinic' check:innerText='Polyclinic' /&gt;" Guid="399efb80-8b8d-405b-bcc5-641f86fff54f" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NSelectItem.Target>
+                              </uix:NSelectItem>
+                            </Sequence>
+                          </ui:IfElseIfBlock.Then>
+                        </ui:IfElseIfBlock>
+                      </sc:BindingList>
+                    </ui:IfElseIfV2.ElseIfs>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:IfElseIfV2.Then>
+                      <Sequence sap2010:Annotation.AnnotationText="Clicks Kadapa if Polyclinic is Cuddapah " DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,272" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NSelectItem DisplayName="Select Item 'Polyclinic'" sap:VirtualizedContainerService.HintSize="382.4,180.8" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="Kadapa [0212]" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                          <uix:NSelectItem.Items>
+                            <scg:List x:TypeArguments="x:String" Capacity="17">
+                              <x:String>Select Dispensary</x:String>
+                              <x:String>Anantapur [0210]</x:String>
+                              <x:String>Bidar (RC Hyderabad) [0057]</x:String>
+                              <x:String>Chittur [0205]</x:String>
+                              <x:String>Eluru [0209]</x:String>
+                              <x:String>Giddalur [0206]</x:String>
+                              <x:String>Golconda [0207]</x:String>
+                              <x:String>Guntur [0203]</x:String>
+                              <x:String>Kadapa [0212]</x:String>
+                              <x:String>Karimnagar [0214]</x:String>
+                              <x:String>Khammam [0216]</x:String>
+                              <x:String>Kurnool [0211]</x:String>
+                              <x:String>Mehbubnagar [0217]</x:String>
+                              <x:String>Nellore [0213]</x:String>
+                              <x:String>Secunderabad 2nd(Bowenpally) [0215]</x:String>
+                              <x:String>Secunderabad Main [0204]</x:String>
+                              <x:String>Vijayawada [0208]</x:String>
+                            </scg:List>
+                          </uix:NSelectItem.Items>
+                          <uix:NSelectItem.Target>
+                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="637, 271, 282, 20" DesignTimeScaleFactor="1" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='referredDispensary' tableRow='4' tag='SELECT' innertext='Select Dispensary Anantapur [0210] Bidar (RC Hyderabad) [0057] Chittur [0205] Eluru [0209] Giddalur [0206] Golconda [0207] Guntur [0203] Kadapa [0212] Karimnagar [0214] Khammam [0216] Kurnool [0211] Mehbubnagar [0217] Nellore [0213] Secunderabad 2nd(Bowenpally) [0215] Secunderabad Main [0204] Vijayawada [0208]' parentname='ClaimIntimation' /&gt;" Guid="884f68ef-bad9-4976-9d86-a42fb0af4b17" ImageBase64="" InformativeScreenshot="ba0d85a8efd981f97f563e73d840ba40.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/divert.do' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="201, 269, 426, 20" ElementType="Text" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tbl_main' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Polyclinic' check:innerText='Polyclinic' /&gt;" Guid="399efb80-8b8d-405b-bcc5-641f86fff54f" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NSelectItem.Target>
+                        </uix:NSelectItem>
+                      </Sequence>
+                    </ui:IfElseIfV2.Then>
+                  </ui:IfElseIfV2>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <uix:NTypeInto ActivateBefore="True" sap2010:Annotation.AnnotationText="Enter Referral Number" ClickBeforeMode="Single" DisplayName="Type Into 'Referral Number'" sap:VirtualizedContainerService.HintSize="1054.4,281.6" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Text="[System.Text.RegularExpressions.Regex.Match(in_ReferralNumber, &quot;(?&lt;=0000)\d+&quot;).Value]" Version="V4">
+              <uix:NTypeInto.EmptyFieldMode>
+                <InArgument x:TypeArguments="uix:NEmptyFieldMode">
+                  <Literal x:TypeArguments="uix:NEmptyFieldMode" sap2010:WorkflowViewState.IdRef="Literal`1_1" Value="SingleLine" />
+                </InArgument>
+              </uix:NTypeInto.EmptyFieldMode>
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="717, 291, 111, 20" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl name='cardnum2' tableRow='6' tag='INPUT' rowName='Referral Number' /&gt;" Guid="ab014e76-b317-49b7-92ca-327dc6a990c0" ImageBase64="" InformativeScreenshot="72eb778ffb05e5d5848e6a4489155b9b.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="201, 289, 426, 20" ElementType="Text" FuzzySelectorArgument="&lt;webctrl id='tbl_main' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Referral Number' check:innerText='Referral Number' /&gt;" Guid="97a0912e-e759-4c18-b3bc-65a08e2ec436" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" sap2010:Annotation.AnnotationText="Enter Serviec Number" ClickBeforeMode="Single" DisplayName="Type Into 'Service Number (as prin…'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1054.4,281.6" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="DebuggerApi" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Text="[in_ServiveNumber.Replace(&quot; &quot;,&quot;&quot;).Trim]" Version="V4">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="637, 311, 199, 20" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='7' tag='INPUT' name='serviceNo' type='text' /&gt;" Guid="ae4f1a49-21c7-4256-b4eb-414e66ed1a07" ImageBase64="" InformativeScreenshot="d3a12ccad72cd9abc5cd000670cc029e.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="201, 309, 426, 20" ElementType="Text" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='7' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='tbl_main' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Service Number (as printed in referral letter)' check:innerText='Service Number (as printed in referral letter)' /&gt;" Guid="5312d3bc-c899-4be0-84fb-a841910cea76" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Clicks Search" ClickType="Single" DisplayName="Click 'Search'" sap:VirtualizedContainerService.HintSize="1054.4,220.8" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="710, 331, 46, 22" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl id='tbl_main' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='8' tag='INPUT' aaname='Search' type='submit' /&gt;" Guid="d09c7045-94ef-49e3-bc6d-55aa9b41c364" ImageBase64="" InformativeScreenshot="5111bae1a4fa0edc2012e49037977f91.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NClick>
+            <uix:NCheckState DisplayName="Check App State 'Failure notice window-Polyclinic'" sap:VirtualizedContainerService.HintSize="1054.4,56.8" sap2010:WorkflowViewState.IdRef="NCheckState_4" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Timeout="5" Version="V4">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="467.2,534.4" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="0.5" DisplayName="Click 'Close(4)-Wrong Polyclinc'" sap:VirtualizedContainerService.HintSize="433.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_9" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="1253, 682, 70, 31" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl aaname='Close' tag='BUTTON' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Close' tag='BUTTON' type='button' class='ui-button ui-corner-all ui-widget' check:text='Close' /&gt;" Guid="0d060eda-fb33-4656-b7a5-90eec3473baa" ImageBase64="" InformativeScreenshot="108b169d2eda8752ecd7727087c64093.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="609, 556, 648, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl id='ui-id-1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='ui-id-1' tag='SPAN' type='' class='ui-dialog-title' aaname='Failure notice window' check:innerText='Failure notice window' /&gt;" Guid="2af04b31-14a9-4964-aa0d-8031706a8c14" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <Assign sap:VirtualizedContainerService.HintSize="433.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[out_wrongPolyclinic]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,168.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Polyclinic Details were wrong&quot;]" />
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="467.2,168.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Assign_6">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[out_wrongPolyclinic]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" CVScreenId="e348d1a3-eba2-49cd-a9da-ab910b6524b6" CvTextArea="659, 604, 541, 16" CvTextArgument="1) Invalid Referal Details. Please contact concerned person from Sourcelnfo" CvType="Text" DesignTimeRectangle="659, 602, 670, 17" DesignTimeScaleFactor="1.25" ElementType="ListItem" FullSelectorArgument="&lt;webctrl parentid='alertpara' tag='LI' aaname='1) Invalid Referal Details. Please contact concerned person from SourceInfo' /&gt;" Guid="fc5e5c1e-02ed-4e06-8c8f-c7dc59fc8c0f" InformativeScreenshot="b587dc8da818ff1c92e8d9ea08044741.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/divert.do' /&gt;" SearchSteps="Selector, CV" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="e348d1a3-eba2-49cd-a9da-ab910b6524b6" DesignTimeRectangle="609, 556, 648, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl id='ui-id-1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='ui-id-1' tag='SPAN' type='' class='ui-dialog-title' aaname='Failure notice window' check:innerText='Failure notice window' /&gt;" Guid="d08df117-71d8-4c65-8375-f337288427f6" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+            <If Condition="[out_wrongPolyclinic=False]" DisplayName="If-polyclinic is not wrong" sap:VirtualizedContainerService.HintSize="1054.4,2706.4" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="1020.8,2453.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NCheckState sap2010:Annotation.AnnotationText="checks if Claim id is already Created" DisplayName="Check App State 'Failure notice window claim id already assigned'" sap:VirtualizedContainerService.HintSize="987.2,1420.8" sap2010:WorkflowViewState.IdRef="NCheckState_6" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Timeout="5" Version="V4">
+                    <uix:NCheckState.IfExists>
+                      <Sequence sap2010:Annotation.AnnotationText="assigns true if id already Created" DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="467.2,1139.2" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Clail ID has been already Submited&quot;]" />
+                        <uix:NGetText sap2010:Annotation.AnnotationText="Gets the claim id" DisplayName="Get Text 'Assigned Claim ID window'" sap:VirtualizedContainerService.HintSize="433.6,220.8" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" TextString="[out_ExtractedClaimID]" Version="V4">
+                          <uix:NGetText.Target>
+                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="659, 537, 670, 34" DesignTimeScaleFactor="1.25" ElementType="ListItem" FullSelectorArgument="&lt;webctrl tag='LI' aaname='This reference number has  been assigned to claim id - * belonging to your own hospital' /&gt;" Guid="4db68cd5-714d-407b-8a9f-32d00fd73a00" ImageBase64="" InformativeScreenshot="b9ee0fea5e16ee0e5e827487e33a8933.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="609, 491, 648, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl id='ui-id-1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='ui-id-1' tag='SPAN' type='' class='ui-dialog-title' aaname='Failure notice window' check:innerText='Failure notice window' /&gt;" Guid="e0a8c4f8-1d62-4b5c-9ced-2570a0ce4415" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NGetText.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NGetText>
+                        <Assign sap2010:Annotation.AnnotationText="assign the claim id" sap:VirtualizedContainerService.HintSize="433.6,145.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[out_ExtractedClaimID]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_ExtractedClaimID,"(?&lt;=claim id\s*-\s*)\d+").Value]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Claim ID Copied&quot;]" />
+                        <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="Clicks close" ClickType="Single" DelayBefore="0.5" DisplayName="Click 'Close Assigend Clami ID Window'" sap:VirtualizedContainerService.HintSize="433.6,220.8" sap2010:WorkflowViewState.IdRef="NClick_14" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="1253, 617, 70, 31" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl aaname='Close' tag='BUTTON' type='button' /&gt;" Guid="6886d021-83a0-453a-b634-9a714e271d3d" ImageBase64="" InformativeScreenshot="0cd095325431194d8fbe29371ced2396.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                          </uix:NClick.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NClick>
+                        <Assign sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Assign_9">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[out_IsIdAssigned]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </uix:NCheckState.IfExists>
+                    <uix:NCheckState.IfNotExists>
+                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="467.2,168.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Assign_10">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[out_IsIdAssigned]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </uix:NCheckState.IfNotExists>
+                    <uix:NCheckState.Target>
+                      <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="659, 537, 670, 34" DesignTimeScaleFactor="1.25" ElementType="ListItem" FullSelectorArgument="&lt;webctrl tag='LI' aaname='This reference number has  been assigned to claim id - * belonging to your own hospital' /&gt;" Guid="75c9376f-2cff-4b7b-9fdf-37720c7096d3" ImageBase64="" InformativeScreenshot="63aa9b7ba285e108f180e5190ba1069a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                    </uix:NCheckState.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NCheckState>
+                  <uix:NCheckState DisplayName="Check App State 'This reference number h…'" sap:VirtualizedContainerService.HintSize="987.2,56.8" sap2010:WorkflowViewState.IdRef="NCheckState_10" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Timeout="5" Version="V4">
+                    <uix:NCheckState.IfExists>
+                      <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="467.2,754.4" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Close claim id is assign to another hospital'" sap:VirtualizedContainerService.HintSize="433.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_16" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" ContentHash="22hXZ29S2kCqSO39qOsU2Q" DesignTimeRectangle="1253, 617, 70, 31" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl aaname='Close' type='button' /&gt;" Guid="abcdd131-e499-4874-ad28-3c9229bcd9aa" ImageBase64="" InformativeScreenshot="0cd095325431194d8fbe29371ced2396.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/Pw54zEUtxECdB5vxd1Towg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_folderName.ToString,&quot;claim ID is assigned to another hospital&quot;}]" DataTable="[out_ClaimIDAlredyAssignedToAnotherHospital_DT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="433.6,220" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                        <Assign sap:VirtualizedContainerService.HintSize="433.6,114.4" sap2010:WorkflowViewState.IdRef="Assign_13">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[out_isClaimIIdAssignedToAnotherHospital]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,168.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Claim ID is assigned to another hospital&quot;]" />
+                      </Sequence>
+                    </uix:NCheckState.IfExists>
+                    <uix:NCheckState.IfNotExists>
+                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="467.2,168.8" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Assign_14">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[out_isClaimIIdAssignedToAnotherHospital]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </uix:NCheckState.IfNotExists>
+                    <uix:NCheckState.Target>
+                      <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" CVScreenId="515f2ed4-3a4a-4a63-95ad-baf05d65877c" DesignTimeRectangle="360, 374, 518, 16" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='SPAN' aaname='Failure notice window' /&gt;" Guid="9e90e324-3af2-498b-b8a1-f8edb8dcf3ba" ImageBase64="" InformativeScreenshot="d1f577fa4ebe4e8791e0cf86b87819ed.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Visible" WaitForReadyArgument="Complete" />
+                    </uix:NCheckState.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NCheckState>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="987.2,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="1020.8,880" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NCheckState DisplayName="Check App State 'This reference number h…'" Exists="[is_ClaimIDAssignedToAnotherHospital]" sap:VirtualizedContainerService.HintSize="987.2,820" sap2010:WorkflowViewState.IdRef="NCheckState_9" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Timeout="10" Version="V4">
+                          <uix:NCheckState.IfExists>
+                            <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="467.2,578.4" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Close claim id is assign to another hospital'" sap:VirtualizedContainerService.HintSize="433.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_10" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                                <uix:NClick.Target>
+                                  <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" ContentHash="22hXZ29S2kCqSO39qOsU2Q" DesignTimeRectangle="1253, 617, 70, 31" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl aaname='Close' type='button' /&gt;" Guid="abcdd131-e499-4874-ad28-3c9229bcd9aa" ImageBase64="" InformativeScreenshot="0cd095325431194d8fbe29371ced2396.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/Pw54zEUtxECdB5vxd1Towg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                                </uix:NClick.Target>
+                              </uix:NClick>
+                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_folderName.ToString,&quot;claim ID is assigned to another hospital&quot;}]" DataTable="[out_ClaimIDAlredyAssignedToAnotherHospital_DT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="433.6,220" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                              <Assign sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[out_isClaimIIdAssignedToAnotherHospital]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </uix:NCheckState.IfExists>
+                          <uix:NCheckState.IfNotExists>
+                            <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="467.2,168.8" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[out_isClaimIIdAssignedToAnotherHospital]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </uix:NCheckState.IfNotExists>
+                          <uix:NCheckState.Target>
+                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="659, 537, 670, 34" DesignTimeScaleFactor="1.25" ElementType="ListItem" FullSelectorArgument="&lt;webctrl tag='LI' aaname='This reference number has  been assigned to claim id - * belonging to *' /&gt;" Guid="8cbfeff8-ba6e-4cd4-859f-969905b07811" ImageBase64="" InformativeScreenshot="936da3db62ce89399fadc07f4e29043c.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Visible" WaitForReadyArgument="Complete" />
+                          </uix:NCheckState.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NCheckState>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                  <uix:NCheckState sap2010:Annotation.AnnotationText="checks app if id is not created and navigated to person detail page" DisplayName="Check App State 'Personal Details'" sap:VirtualizedContainerService.HintSize="987.2,100.8" sap2010:WorkflowViewState.IdRef="NCheckState_7" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Timeout="5" Version="V4">
+                    <uix:NCheckState.IfExists>
+                      <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,496" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="click check box" ClickType="Single" DelayBefore="3" DisplayName="Click 'yes button'" sap:VirtualizedContainerService.HintSize="416,220.8" sap2010:WorkflowViewState.IdRef="NClick_11" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" DesignTimeRectangle="812, 753, 16, 16" DesignTimeScaleFactor="1.25" ElementType="RadioButton" FullSelectorArgument="&lt;webctrl parentid='main_body' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='18' tag='INPUT' name='acceptReferral' rowName='*' type='radio' /&gt;" Guid="60bdcc1f-0bcf-4eb3-b3de-ec24066a11a5" ImageBase64="" InformativeScreenshot="5598645c5329504d5c6f9d9b102000c4.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="787, 747, 1141, 25" FullSelectorArgument="&lt;webctrl parentid='main_body' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='18' tag='TD' aaname='*' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='main_body' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' aaname='*' class='display' check:text='unchecked' /&gt;" Guid="e7d8f1cf-6f27-416d-8d20-662af4365e66" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NClick.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NClick>
+                        <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="clicks submit" ClickType="Single" DisplayName="Click 'Submit'" sap:VirtualizedContainerService.HintSize="416,213.6" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" ContentHash="f0FyUavsbEWjMK8HzmLwYw" DesignTimeRectangle="1084, 772, 58, 26" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl parentid='main_body' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='19' tag='INPUT' aaname='Submit' type='submit' /&gt;" Guid="6c0c1da7-ac7d-4cc3-865b-d6f6f4505a99" ImageBase64="" InformativeScreenshot="3f76c42f50dc222ffb79cb44dfa96a4e.png" IsResponsive="True" Reference="8EQj56H3V0ez2o2LfAkxpA/2snBVWx2HkGkfQQpQN-jvw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                          </uix:NClick.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NClick>
+                      </Sequence>
+                    </uix:NCheckState.IfExists>
+                    <uix:NCheckState.IfNotExists>
+                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </uix:NCheckState.IfNotExists>
+                    <uix:NCheckState.Target>
+                      <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="1ae593c5-d736-4442-a4b0-2e45d3520106" ContentHash="e_nBN5ijoUiasR1bM0_Gig" DesignTimeRectangle="298, 422, 1630, 25" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='main_body' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='5' tag='TD' aaname='Personal Details' /&gt;" Guid="b7c7778b-9a1e-429d-a515-78f4866db146" InformativeScreenshot="9348f455c0acd82e461804631f7de46d.png" IsResponsive="True" Reference="8EQj56H3V0ez2o2LfAkxpA/QFrjyi9BCEyL16fp28ByNg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="298, 397, 489, 25" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='main_body' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' aaname='Referral Issue Date' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='main_body' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' aaname='Referral Issue Date' class='rmessage' check:text='Referral Issue Date' /&gt;" Guid="3f2a4ff1-9ac3-4bcc-8da8-e02530958bbc" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NCheckState.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NCheckState>
+                  <uix:NCheckState sap2010:Annotation.AnnotationText="new generated Claim ID if not alread created id" DelayBefore="5" DisplayName="Check App State 'Confirmation notice win…'" sap:VirtualizedContainerService.HintSize="987.2,710.4" sap2010:WorkflowViewState.IdRef="NCheckState_8" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Timeout="5" Version="V4">
+                    <uix:NCheckState.IfExists>
+                      <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,388.8" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,139.2" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NGetText sap2010:Annotation.AnnotationText="Get claim id" DisplayName="Get Text 'Confirmation notice win…'" sap:VirtualizedContainerService.HintSize="382.4,79.2" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" TextString="[out_generatedClaimID]" Version="V4">
+                                <uix:NGetText.Target>
+                                  <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" DesignTimeRectangle="742, 470, 483, 17" DesignTimeScaleFactor="1.25" ElementType="ListItem" FullSelectorArgument="&lt;webctrl parentid='succpara' tag='LI' aaname='*' /&gt;" Guid="0bd7a116-5b1f-4041-94bf-f967f63438d8" ImageBase64="" InformativeScreenshot="52ab35fe87cff276f61a9d4ae7f5798b.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                                </uix:NGetText.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </uix:NGetText>
+                            </Sequence>
+                          </ui:CommentOut.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:CommentOut>
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,139.2" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign sap2010:Annotation.AnnotationText="Assign Id" sap:VirtualizedContainerService.HintSize="382.4,79.2" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[out_generatedClaimID]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_generatedClaimID,"\d{8}").Value]</InArgument>
+                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Assign>
+                            </Sequence>
+                          </ui:CommentOut.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:CommentOut>
+                        <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="click close" ClickType="Single" DelayBefore="0.3" DisplayName="Click 'Close'" sap:VirtualizedContainerService.HintSize="416,213.6" sap2010:WorkflowViewState.IdRef="NClick_13" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" DesignTimeRectangle="1148, 612, 71, 31" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;&lt;webctrl aaname='Close' type='button' /&gt;" Guid="d0fcbca6-8392-43be-b988-5f3026babd0d" ImageBase64="" InformativeScreenshot="00df21e9e0e2ce1a7f3030a485e22145.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="692, 424, 479, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl id='ui-id-1' tag='SPAN' aaname='Confirmation notice window' /&gt;" FuzzySelectorArgument="&lt;webctrl id='ui-id-1' tag='SPAN' type='' class='ui-dialog-title' aaname='Confirmation notice window' check:innerText='Confirmation notice window' /&gt;" Guid="f1c39ddd-be45-437e-b006-a82b3f5adea9" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NClick.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NClick>
+                      </Sequence>
+                    </uix:NCheckState.IfExists>
+                    <uix:NCheckState.IfNotExists>
+                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </uix:NCheckState.IfNotExists>
+                    <uix:NCheckState.Target>
+                      <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="ea272f60-1612-4efc-bdb7-b96395133fb0" DesignTimeRectangle="692, 424, 479, 21" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='LI' aaname='Saved(Interim) with claim id - *' /&gt;" Guid="a53cbc92-a03d-4aa5-a6a7-7d68cf7cc7b3" InformativeScreenshot="dd400fb7abb220623361e9fbceb28383.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Visible" WaitForReadyArgument="Complete" />
+                    </uix:NCheckState.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NCheckState>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="987.2,48" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[out_isClaimIIdAssignedToAnotherHospital=False]" DisplayName="If-claim id is already submitted to another hospital" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="If_2">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="481.6,356.8" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NCheckState sap2010:Annotation.AnnotationText="checks if Claim id is already Created" DisplayName="Check App State 'Failure notice window claim id already assigned'" sap:VirtualizedContainerService.HintSize="448,88" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Timeout="5" Version="V4">
+                                <uix:NCheckState.IfExists>
+                                  <Sequence sap2010:Annotation.AnnotationText="assigns true if id already Created" DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="467.2,376" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,176" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Clail ID has been already Submited&quot;]" />
+                                    <Assign sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[out_IsIdAssigned]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </uix:NCheckState.IfExists>
+                                <uix:NCheckState.IfNotExists>
+                                  <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="467.2,168.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Assign sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[out_IsIdAssigned]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </uix:NCheckState.IfNotExists>
+                                <uix:NCheckState.Target>
+                                  <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="659, 537, 670, 34" DesignTimeScaleFactor="1.25" ElementType="ListItem" FullSelectorArgument="&lt;webctrl tag='LI' aaname='This reference number has  been assigned to claim id -*belonging to your own hospital' /&gt;" Guid="03abfd08-6c2a-419c-8129-41e33e699348" ImageBase64="" InformativeScreenshot="63aa9b7ba285e108f180e5190ba1069a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                                </uix:NCheckState.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </uix:NCheckState>
+                              <uix:NCheckState sap2010:Annotation.AnnotationText="checks app if id is not created and navigated to person detail page" DisplayName="Check App State 'Personal Details'" sap:VirtualizedContainerService.HintSize="448,116.8" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Timeout="5" Version="V4">
+                                <uix:NCheckState.IfExists>
+                                  <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,496" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="click check box" ClickType="Single" DelayBefore="3" DisplayName="Click 'yes button'" sap:VirtualizedContainerService.HintSize="416,220.8" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" DesignTimeRectangle="812, 753, 16, 16" DesignTimeScaleFactor="1.25" ElementType="RadioButton" FullSelectorArgument="&lt;webctrl parentid='main_body' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='18' tag='INPUT' name='acceptReferral' rowName='*' type='radio' /&gt;" Guid="60bdcc1f-0bcf-4eb3-b3de-ec24066a11a5" ImageBase64="" InformativeScreenshot="5598645c5329504d5c6f9d9b102000c4.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="787, 747, 1141, 25" FullSelectorArgument="&lt;webctrl parentid='main_body' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='18' tag='TD' aaname='*' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='main_body' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' aaname='*' class='display' check:text='unchecked' /&gt;" Guid="e7d8f1cf-6f27-416d-8d20-662af4365e66" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                    <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="clicks submit" ClickType="Single" DisplayName="Click 'Submit'" sap:VirtualizedContainerService.HintSize="416,213.6" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" ContentHash="f0FyUavsbEWjMK8HzmLwYw" DesignTimeRectangle="1084, 772, 58, 26" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl parentid='main_body' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='19' tag='INPUT' aaname='Submit' type='submit' /&gt;" Guid="6c0c1da7-ac7d-4cc3-865b-d6f6f4505a99" ImageBase64="" InformativeScreenshot="3f76c42f50dc222ffb79cb44dfa96a4e.png" IsResponsive="True" Reference="8EQj56H3V0ez2o2LfAkxpA/2snBVWx2HkGkfQQpQN-jvw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                  </Sequence>
+                                </uix:NCheckState.IfExists>
+                                <uix:NCheckState.IfNotExists>
+                                  <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Sequence>
+                                </uix:NCheckState.IfNotExists>
+                                <uix:NCheckState.Target>
+                                  <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="1ae593c5-d736-4442-a4b0-2e45d3520106" ContentHash="e_nBN5ijoUiasR1bM0_Gig" DesignTimeRectangle="298, 422, 1630, 25" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='main_body' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='5' tag='TD' aaname='Personal Details' /&gt;" Guid="b7c7778b-9a1e-429d-a515-78f4866db146" InformativeScreenshot="9348f455c0acd82e461804631f7de46d.png" IsResponsive="True" Reference="8EQj56H3V0ez2o2LfAkxpA/QFrjyi9BCEyL16fp28ByNg" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                                    <uix:TargetAnchorable.Anchors>
+                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                        <uix:Target DesignTimeRectangle="298, 397, 489, 25" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='main_body' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' aaname='Referral Issue Date' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='main_body' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' aaname='Referral Issue Date' class='rmessage' check:text='Referral Issue Date' /&gt;" Guid="3f2a4ff1-9ac3-4bcc-8da8-e02530958bbc" SearchSteps="Selector, FuzzySelector" />
+                                      </scg:List>
+                                    </uix:TargetAnchorable.Anchors>
+                                  </uix:TargetAnchorable>
+                                </uix:NCheckState.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </uix:NCheckState>
+                              <uix:NCheckState sap2010:Annotation.AnnotationText="new generated Claim ID if not alread created id" DelayBefore="5" DisplayName="Check App State 'Confirmation notice win…'" sap:VirtualizedContainerService.HintSize="448,92" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Timeout="5" Version="V4">
+                                <uix:NCheckState.IfExists>
+                                  <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,388.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                                      <ui:CommentOut.Body>
+                                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,139.2" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <uix:NGetText sap2010:Annotation.AnnotationText="Get claim id" DisplayName="Get Text 'Confirmation notice win…'" sap:VirtualizedContainerService.HintSize="382.4,79.2" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" TextString="[out_generatedClaimID]" Version="V4">
+                                            <uix:NGetText.Target>
+                                              <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" DesignTimeRectangle="742, 470, 483, 17" DesignTimeScaleFactor="1.25" ElementType="ListItem" FullSelectorArgument="&lt;webctrl parentid='succpara' tag='LI' aaname='*' /&gt;" Guid="0bd7a116-5b1f-4041-94bf-f967f63438d8" ImageBase64="" InformativeScreenshot="52ab35fe87cff276f61a9d4ae7f5798b.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                                            </uix:NGetText.Target>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </uix:NGetText>
+                                        </Sequence>
+                                      </ui:CommentOut.Body>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:CommentOut>
+                                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                                      <ui:CommentOut.Body>
+                                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,139.2" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Assign sap2010:Annotation.AnnotationText="Assign Id" sap:VirtualizedContainerService.HintSize="382.4,79.2" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[out_generatedClaimID]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(out_generatedClaimID,"\d{8}").Value]</InArgument>
+                                            </Assign.Value>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </Assign>
+                                        </Sequence>
+                                      </ui:CommentOut.Body>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:CommentOut>
+                                    <uix:NClick ActivateBefore="True" sap2010:Annotation.AnnotationText="click close" ClickType="Single" DelayBefore="0.3" DisplayName="Click 'Close'" sap:VirtualizedContainerService.HintSize="416,213.6" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9dbec38c-d956-45d7-83d6-e74a59f4baec" Version="V4">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" DesignTimeRectangle="1148, 612, 71, 31" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;&lt;webctrl tag='BUTTON' aaname='Close' type='button' /&gt;" Guid="d0fcbca6-8392-43be-b988-5f3026babd0d" ImageBase64="" InformativeScreenshot="00df21e9e0e2ce1a7f3030a485e22145.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="692, 424, 479, 21" ElementType="Text" FullSelectorArgument="&lt;webctrl id='ui-id-1' tag='SPAN' aaname='Confirmation notice window' /&gt;" FuzzySelectorArgument="&lt;webctrl id='ui-id-1' tag='SPAN' type='' class='ui-dialog-title' aaname='Confirmation notice window' check:innerText='Confirmation notice window' /&gt;" Guid="f1c39ddd-be45-437e-b006-a82b3f5adea9" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                  </Sequence>
+                                </uix:NCheckState.IfExists>
+                                <uix:NCheckState.IfNotExists>
+                                  <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Sequence>
+                                </uix:NCheckState.IfNotExists>
+                                <uix:NCheckState.Target>
+                                  <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="ea272f60-1612-4efc-bdb7-b96395133fb0" DesignTimeRectangle="692, 424, 479, 21" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;&lt;webctrl parentid='succpara' tag='LI' aaname='*' /&gt;" Guid="a53cbc92-a03d-4aa5-a6a7-7d68cf7cc7b3" InformativeScreenshot="dd400fb7abb220623361e9fbceb28383.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                                </uix:NCheckState.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </uix:NCheckState>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" ContentHash="Vi4itHPcqUKuVF_KLFxw-w" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAwfSURBVFhHtZgJVNVVHsfJFCEgJRk35IEgT3g77+WC8DYCRQUtbapppk5W47SfOtWZIkybOjNzKsEFFBEUt2ayZWoqp5R9rTw6rdOKiSwPk0UEBO79/35nzu/e/3s8KOfYNHPP+Zzv7/7+97378f6fD/gHBPyXo3ZRYlin23pnp9u2s9Ntazjrtp3tdNmUTrfgrMdtO9Hpsu5ud1tv/GBRYuT41//PhzE0eOJtsyNi211J6866bUc6XdahTpcNO11WkGlDj9+cao/LCh6XlXLY40w66nFa7rp91jS9OTR48vj3/1njhunh+lan5aGz7mvrOl3W4U6XjTYGn5BTSKDHaQWPM0lIdcgedLiSRN3hTAKZ1s86nOanr58erh+/z08e9qmhQXlazS1fp5qr6MRoYxJSTwW9Mh4nSQiA8EihsTgs0O5IwnaHRdRfLjHWvqjV3E57jN/3soY+JDj8o2TTsx6ntc3jtCpy4yQhpZ6IVwg7HD7AK+Lr2X1iQHLtdgG02y1Ku8PScXyhLlcXEnz1+P3/47hqwoRAjzOpVAj4bSg2kW8+uqHcVPbsFmizW1AF2u1maLOboT3VDG2pZvRmm0xRt6aaoTXVXEp7jvf40aEPDQ7vsFtKfacwegL+IkKgzW5GQapFFZDpL9HqrVPM2JZihtYUE7ammKDVrz5DucRYSndtvM+YYQ8PDTq5yPAHVcR3Kl4piZDynoDvREZFTKKmjUVfSvggmR+wRAAnFiT+wX71VZf+TG7WRt3eZrd4xK0gsdHbIE7Fm+IkpJSUkULYmiLFRtMErUuM4oTkKXlljHBmiZESzySrKWpD2wuxs28Z7yXGqoiphn8lG2rGnc6ogE/Cxw9Ox3dCPhEp0yJRRQzQkmwEEqNeC6XAQCifLkisyZ42xTBGLjh26uS1W5ZvqLxhIZxRb88ZVYCOXm5Kb67OKekk0xaC53e/wf5/vIUj3zUjcI4ICuJQByqdryP/fD3yD1KQv29D3pQE/P0kENmUhLzJSj3ZF2lR55Yh5bjlIVti8ESf4LS0GP2C/as/e+5RN37lMvvdhrG3w/svbsu0w7nHH8Dhb79GGowD9gwo2N4j6R1UcISBuAa9HyD/4mFUjjuBv28B3mQGKSOQ80Yz8iYzMtEzA2sy161fc02sT9Cyf/XdloPXQ9quLDyydoEQOZMsb4v3FpxJFrcGW7PT4PyBPcDP9yJXED9uYfhS4xBuen0AH9jXjw/s78dn3xzA0uqLeOI7JtYgO49K+17gJ9KBN5mQhFijScgoTSbgjSYxlz0jzYeVD0zrfIJJB1cftRxcDZaDq/GBjenq58EILYtJyoCnJdC6LAXPHygFpf8C9g4oWHD0It5U0Icpz/Wi7emxLN7Uizdu7xNraC3yC6i07QH+oR15oxF5owFYo0EkbzSgWiNv1Ktz/REhl/h8RqT5wKphEjQfWI3Xlq3CvXckw+nFehWDzGQDnn3sfnFy5wcBHznUj8nPSBkrsUHiFaQeJa155NCAkATWi/yLB1UpPbBGvSokEnkDpQ54k44Eh5oPRYYFWA5mrzXty0bTvlVIad6/ClN3ZcMnDiN8t0hH4KlFOmxx2WDwwybkCuD2Y4O4eFMPJm24PBZu6sFtRwfFa2Hga1TevxZ5QyKoqHUCMlFTqtQl3Blg3pddYiwjwWyQotloLsuCP96fit8u1sGphTokPPfeIT709Llas7UPLbk9kg1qXgr1+o3bz+NHLUy8h/LJrUJEheSAN8xHNgqw+vnI6rRFJHjSWJaFxrIsIFFvnb41E95abYVTCxIJ7HvjFRzhgMVVF/HajXJT809g8TM9eLBhSJyicvZNJCFeryXAD2QNWuANWmBU12sbAoz7sgaMe7OQMOxdKbNsJZhLV8Bjj9nhkxQdNC9IRO7pwN4BwI2v96Mpt/sHmMfVXjHTU6O93Ff7sadfQRhsRlYfj9zHPAL8Enh9HLK6uLMBqhgY9qxEP8Q8pTATDq+xQrNtPoCiYFu3gveUXUDjU90C2thbi7lf/WO99Xv6sLVbQQROmwt4fZyQkcQCr4uVvbpYuq4EGPauVHR7VoC+dAXqSlegyJLlotaVroDfPuXAkyk6oJ8S9Oa0iSGnCw053Wh4qns0vdBcQGvUdSrr9/aJfyT9tGF1c4HXzQVKVjcXuSBGJKuLAVYXQ4kB+j0rv9eVLgchVLJcipKgBEy7MqHsl1Yc+e5bcXtyXrmA+pwu1Od0qzmeS/W7cMNr/eJjAkNtyGpjkNdGI6uNBlYbTXJAc9Gro56G5gMBupIVjYkly1GwOxModbtpnkkA9Zb/OQ1bKt9GpgDur7+Ito1dqMvpRl0O5eVh3tCFRZWD4j+a0vEXZLUa5LUakZIo4BK/WnOCBIsSdwsZKUi1SsLuZZCwO1Owcff94ivi5GmG2Vt6MTGnS6B7UgokPnlp6HpWfi8ePzUiv2Y+vglY7Rwhw0XOQVYzR9SUKsCqI0sCEooz75IiyyCheBkkFi/DhOJMFaqpnwm20lX4Vfcp8TWR/94gmnK7MOFJL+d8MqM9CfVobd67/fKLurceeV08sJpIAnltJBCirpkNrGY2Ui2onrUmIPH5RWHzdy0dmr9rKc7ftRR8FNF8GfVkv3gp3PPu09g71Ic9A4D37etDY+45nP/EOJ7sGjMnufv202sUvDh0Hkc+vUNI8JpZwGtmAqueiUytqcdqZiKrngm8euZw86EI+Qe/dtfSd7RFS1GSAaO1fy8DFu5di8X/fBn7hvvFhnnvDuDyzT2ozzmH2ifGYtlwDrPye3DzuwNi7cBwP3Y2F+FQvU5KVc8AFWQ1M8AHzatnIK+ecdT320xsQdo6bVHGcHxRBsTvzADtzgwptjMD4wm/fur+X2HxyZex92Kf+FXqw+YRLCwfwJxXL+CdJb24rqQXf3/4ApbVDuLJ0yNiDa098tkB/KRqMQwLgekEqKnyCy/Aq6ejUjnjbp9gWMrs2PiijFqSiN9BUukQvyOdEueJXjrM25FOkki5oHQNrj+SCw2tJ8SHfpjJX1hbuzme6ebY3a+IX2JpfNnVjPceyYVnXnPD+Uo6IZKIAF4d4a2RVUVIuaoI5FURwKsiPl2fHTT65CEwKmzi3K3uB+ftTB+atyMd5xUKIZy34zq/WkqLeWE6xu/IAOOuLLz1jUfx5c/fwW+6W5ArXPBN92n825fH8KbXHkRjcRamFjuh9egsYFXTCKTk1b5azEfra3C4cuoG6/wrxz6/CbHN0Me86KiOK7hOiSu8DuIKSE4SV5iGNFcR1/wS4wrEdZCZBrEFaVSL6/GFbig4nIi8Khx41TXAqsKRoLmoK8OBVVJvqqi7355Sc3PapB9/bhPx64RbYgvS2mO3pyGhbihQeyBS3ZxS4vZex9gCt1yjrl1VshjOHZuGvGoqAYyoFDVJUS3mrHIK4dn9ePBt4718IyhhapDmuSXPzt1OmwhQkoax29wEzN3mRnldlfDvUW5Tr21zo6HQAZV/nwOscgqBrGoKsKqrgVUKkIsMQxVoORyWe531ykv/4U4jMDI0PHZb2h7aSGw8Bpe3J3PrmOu+9TFinQse3meCC+VeoTAvyCooQ0EmyYUiKw/bY46bcJkPkQInBM7d5iqdu9UlpGK2usSm6sZSYKsbRV+9Jvq0XvYgdUcyfPjWDBypIJFQZJRCStRyXhECrDIEWUVIaWhQwOU9PPKOSbNDrp6zKTk3Ot/ZEb3FCSroV48lX1wT1+dttcMLh+JxoJwkrkJWcZWawcgrgoGVByMrD+K8Iqjt9MtBz5rirrhm/P6XNSZrp06edrP2ds2fUmqj852g2eJEzRaHlMmndIBG4ERNngOpH7PFgVlFVjj+VgQJASsPIhmSEjWvoHry8Lk3JlcXPzbx5nTbFT//cXCIdbo+Os/5tCbf+ZkmzwEk482ozXaIIkmq8+yo3ZKKRX+NxoFjJDQZBcdEAisPHGblgXW8IuShm9wTxj5/+bkjMCp0cmjyLL0mz3G3Js9xNGqzY9gn6CXPjhmFNux6j25hILBjgWpOGmLlge/wiuB167Mmxtq0V44+d/l/jcjcRZHR+c4bo/LsJVGb7Sc1eY7BqM12fOPVmcAqJn3Pyic18vLAIlZ55Z2nXgoLG//6yx3/Bqy2rmkU7a7qAAAAAElFTkSuQmCC" InformativeScreenshot="ed0928e2349d23d19dc02ec4c2242052.jpg" Reference="YmiKxvfyLUez7XOoWA_QcQ/F6cTuBAVeE-k6T44faglSQ" Selector="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" Title="Bill Processing Agency For ECHS" Url="https://www.echsbpa.utiitsl.com/ECHS/" Version="V1" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

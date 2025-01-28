@@ -1,0 +1,290 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="PatientReferral" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_ExtractedClaimID" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>PatientReferral_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.StudioWeb.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="PatientReferral" sap:VirtualizedContainerService.HintSize="1452.0000000000002,1304.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Chrome Bill Processing Agency For ECHS-Main" sap:VirtualizedContainerService.HintSize="1019.2,1281.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="ea110d10-4809-483b-8b4f-7d07859bf834" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="985.6,1041.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Patient Referral'" sap:VirtualizedContainerService.HintSize="952,189.6" sap2010:WorkflowViewState.IdRef="NClick_1" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ea110d10-4809-483b-8b4f-7d07859bf834" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" DesignTimeRectangle="10, 415, 288, 26" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;&lt;webctrl aaname='Patient Referral' tag='A' /&gt;" Guid="529426b9-400c-4206-afbb-71e4381827e5" ImageBase64="" InformativeScreenshot="b8ca76818c78cb1fba19e7f14f240d02.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="10, 442, 288, 25" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Need More Info [Emergency]' parentid='0' tableRow='6' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Need More Info [Emergency]' parentid='0' type='' tag='A' class='' check:innerText='Need More Info [Emergency]' /&gt;" Guid="2dd12542-2fb1-4169-a531-389fe5076976" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NCheckState DisplayName="Check App State 'Referral Type'" sap:VirtualizedContainerService.HintSize="952,56.8" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="ea110d10-4809-483b-8b4f-7d07859bf834" Timeout="5" Version="V4">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,300.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Claim ID'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="416,56.8" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="DebuggerApi" ScopeIdentifier="ea110d10-4809-483b-8b4f-7d07859bf834" Text="[in_ExtractedClaimID]" Version="V4">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="949, 334, 128, 23" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='filterTable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='claimId' tableRow='2' tag='INPUT' type='text' /&gt;" Guid="dee7e267-df63-461d-a110-5498b7034d1f" ImageBase64="" InformativeScreenshot="fc370a35b766c3dae9d4bf8f6410f01d.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="859, 337, 65, 18" ElementType="Text" FullSelectorArgument="&lt;webctrl id='filterTable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl id='filter_claim' tableRow='2' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl id='filterTable' tag='TABLE' /&gt;&lt;webctrl id='filter_claim' type='' tag='LABEL' class='' aaname='Claim ID' check:innerText='Claim ID' /&gt;" Guid="a5388e7d-7ffb-4749-be8b-057cb2af9c36" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NTypeInto>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Submit(2)'" sap:VirtualizedContainerService.HintSize="416,182.4" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ea110d10-4809-483b-8b4f-7d07859bf834" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="1068, 583, 57, 26" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl id='filterTable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='13' tag='INPUT' aaname='Submit' type='button' /&gt;" Guid="9335ef8d-237f-4ea2-8ea1-a6e22af66cb8" ImageBase64="" InformativeScreenshot="83d39d478acc5f0db300508a9cfc53e6.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="298, 251, 1597, 31" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl parentid='main_body' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' aaname='                 Patient Referral                                                                 ' /&gt;" Guid="ca449a42-ad07-44d2-8b63-4c2ca724168a" ImageBase64="" InformativeScreenshot="0953724e6005a876cbaf06c52ddc9b27.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="298, 308, 639, 25" ElementType="Text" FullSelectorArgument="&lt;webctrl id='filterTable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='filterTable' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='rmessage' aaname='Referral Type' check:innerText='Referral Type' /&gt;" Guid="c5cfc6d0-0fee-4e08-95af-03b9afcfd4c2" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+            <uix:NCheckState DisplayName="Check App State 'ID'" sap:VirtualizedContainerService.HintSize="952,56.8" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="ea110d10-4809-483b-8b4f-7d07859bf834" Timeout="5" Version="V4">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,244" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:Int32" Default="2" Name="tbColumn" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'ID'" sap:VirtualizedContainerService.HintSize="416,182.4" sap2010:WorkflowViewState.IdRef="NClick_3" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ea110d10-4809-483b-8b4f-7d07859bf834" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="441, 342, 79, 17" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="[string.Format(&quot;&lt;webctrl id='claimtable' tableRow='6' tag='TABLE' /&gt;&lt;webctrl aaname='*' tableRow='1' tag='LABEL' tableCol='{0}' /&gt;&quot;, tbColumn)]" Guid="4e5396f6-6882-4334-9b2e-9da4c983fb09" ImageBase64="" InformativeScreenshot="6e44f7d30bde4fc01258223b5b8fe825.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="377, 308, 157, 30" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='columnheader' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='3' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='columnheader' tag='TABLE' /&gt;&lt;webctrl type='' class='righttablehead' tag='TD' aaname='ID' check:innerText='ID' /&gt;" Guid="f6b88053-73f4-417f-a744-1e2ee3619895" ImageBase64="" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/divert.do" DesignTimeRectangle="377, 308, 157, 30" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='columnheader' tableRow='6' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='3' tag='TD' aaname='ID' /&gt;" Guid="834444de-816f-457f-8ed4-e7db0ecc4455" ImageBase64="" InformativeScreenshot="126e7ffdabe1352710a9e6db12924db4.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+            <uix:NCheckState DisplayName="Check App State 'Click Here To Change Th…'" sap:VirtualizedContainerService.HintSize="952,676.8" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="ea110d10-4809-483b-8b4f-7d07859bf834" Timeout="5" Version="V4">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="449.6,433.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Click Here To Change Th…(1)'" sap:VirtualizedContainerService.HintSize="416,189.6" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ea110d10-4809-483b-8b4f-7d07859bf834" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" ContentHash="cGPtNq4OxESZGJbMvx530w" DesignTimeRectangle="1101, 362, 391, 18" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl tag='B' aaname='*Click Here To Change The Admission Status To OPD.*' /&gt;" Guid="aa74ea53-d682-4c01-834b-ae95904740da" ImageBase64="" InformativeScreenshot="a386594235da5bc734699a2069bb7318.png" IsResponsive="True" Reference="YmiKxvfyLUez7XOoWA_QcQ/88vW4OXuSECwAGPo1kiQkA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="0.5" DisplayName="Click 'OK(1)'" sap:VirtualizedContainerService.HintSize="416,182.4" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ea110d10-4809-483b-8b4f-7d07859bf834" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" DesignTimeRectangle="1036, 222, 90, 49" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;ctrl role='push button' text='OK' /&gt;" Guid="09832d65-e019-42e1-b902-375a0106929a" ImageBase64="" InformativeScreenshot="37820e70ed8d0d1820e3cbe1cce78f63.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Bill Processing Agency For ECHS - Google Chrome' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="1135, 222, 89, 49" ElementType="Button" FullSelectorArgument="&lt;ctrl name='www.echsbpa.utiitsl.com says' role='dialog' /&gt;&lt;ctrl name='Cancel' role='push button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='www.echsbpa.utiitsl.com says' role='dialog' /&gt;&lt;ctrl name='Cancel' role='push button' automationid='' check:fulltext='Cancel' /&gt;" Guid="ccfeded0-4fea-41af-be8d-07295c30cd83" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="449.6,91.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="echsbpa.utiitsl.com/ECHS/claimlist.do" CVScreenId="ebc75b43-58df-4484-895a-14550afaf766" DesignTimeRectangle="1101, 362, 391, 18" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl tag='B' aaname='*Click Here To Change The Admission Status To OPD.*' /&gt;" Guid="5d7b4731-7e99-4bd8-a793-bdd50e2ddc28" InformativeScreenshot="7dd43209f9cd903b93c71241ef2bd15a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' url='https://www.echsbpa.utiitsl.com/ECHS/*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="ed0928e2349d23d19dc02ec4c2242052.jpg" Selector="&lt;html app='chrome.exe' title='Bill Processing Agency For ECHS' /&gt;" Title="Bill Processing Agency For ECHS" Url="https://www.echsbpa.utiitsl.com/ECHS/" Version="V1" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

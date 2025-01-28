@@ -1,0 +1,76 @@
+{
+  "name": "Care_ECHS_OP",
+  "projectId": "ec81aa52-9bdc-4730-98e4-cb80337947ff",
+  "description": "Care Hospitals ECHS_OP Process",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.DocumentUnderstanding.Activities": "[2.12.1]",
+    "UiPath.DocumentUnderstanding.ML.Activities": "[1.31.1]",
+    "UiPath.Excel.Activities": "[2.24.3]",
+    "UiPath.Form.Activities": "[24.10.5]",
+    "UiPath.FormActivityLibrary": "[2.0.8]",
+    "UiPath.IntelligentOCR.Activities": "[6.22.0]",
+    "UiPath.Mail.Activities": "[1.23.11]",
+    "UiPath.OCR.Activities": "[3.21.2]",
+    "UiPath.PDF.Activities": "[3.20.2]",
+    "UiPath.System.Activities": "[24.10.6]",
+    "UiPath.Testing.Activities": "[24.10.3]",
+    "UiPath.UIAutomation.Activities": "[24.10.8]",
+    "UiPath.WebAPI.Activities": "[1.21.1]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "24.10.5.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": true,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Test\\Main.xaml",
+      "uniqueId": "43d36704-6ee8-4535-9c0c-c85306f70fe7",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "58b2f10e-f520-4961-940b-1fa42bebcb67",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}

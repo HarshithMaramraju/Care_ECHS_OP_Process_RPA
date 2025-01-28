@@ -1,0 +1,278 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Discharge_Summary_Downloading" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_Discharge_IP_no" Type="InArgument(x:String)" />
+    <x:Property Name="DS_Document_Date_format" Type="OutArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Discharge_Summary_Downloading_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Discharge_Summary_Downloading" sap:VirtualizedContainerService.HintSize="1516,3297" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Assign - &quot;DS_Document_Date_format&quot;" sap:VirtualizedContainerService.HintSize="1124,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[DS_Document_Date_format]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[System.DateTime.Now.ToString("dd-MM-yyyy")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: CARE Hospital Banjara Hills" sap:VirtualizedContainerService.HintSize="1124,3160" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="b9a64f55-903f-4b70-a263-62b0d5f2765a" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1090,2920" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - &quot;DS Option&quot;" sap:VirtualizedContainerService.HintSize="1056,189" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b9a64f55-903f-4b70-a263-62b0d5f2765a" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="http://carehis.carehospitals.com:5000/EMRBILLING/IPBill.aspx?MPG=P310&amp;Mpg=P310&amp;irtrf=9169ACF5-DBF2-402D-AA96-16B9CD2FE183&amp;OP=False_0_1_4_2_13_2_11923_RPA_11_0_CARE%Hospital%EF%BF%BDnjara%Hills_0_21_310" CVScreenId="adf0d8b2-b82d-4ec2-b099-44a8d6cab6f9" DesignTimeRectangle="1589, 247, 15, 15" DesignTimeScaleFactor="1" ElementType="Icon" FullSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl type='image' aaname='Open menu for other options' /&gt;" Guid="0a3d6048-d38a-43bd-917e-7474cc148a3e" InformativeScreenshot="071f5a5b8d55fc62e0446a4e484e177f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click  - &quot;Discharge Summary&quot;" sap:VirtualizedContainerService.HintSize="1056,189" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b9a64f55-903f-4b70-a263-62b0d5f2765a" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="http://carehis.carehospitals.com:5000/EMRBILLING/IPBill.aspx?MPG=P310&amp;Mpg=P310&amp;irtrf=9169ACF5-DBF2-402D-AA96-16B9CD2FE183&amp;OP=False_0_1_4_2_13_2_11923_RPA_11_0_CARE%Hospital%EF%BF%BDnjara%Hills_0_21_310" CVScreenId="30e5b7d0-32a5-41fe-b869-8c51f5e06d2e" DesignTimeRectangle="1323, 325, 279, 23" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl aaname='Discharge Summary' tag='SPAN' /&gt;" Guid="90cae354-98c8-46cc-b0d8-29a1c515ba9f" InformativeScreenshot="1ac966e4e11662731cc05019573f6ae4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NCheckState DisplayName="Check App State 'Discharge summary is no…'" sap:VirtualizedContainerService.HintSize="1056,2298" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="b9a64f55-903f-4b70-a263-62b0d5f2765a" Version="V4">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,244" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click  - Discharge summary not prepared TAB" sap:VirtualizedContainerService.HintSize="416,182" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b9a64f55-903f-4b70-a263-62b0d5f2765a" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="http://carehis.carehospitals.com:5000/EMRBILLING/IPBill.aspx?MPG=P310&amp;Mpg=P310&amp;irtrf=9169ACF5-DBF2-402D-AA96-16B9CD2FE183&amp;OP=False_0_1_4_2_13_2_11923_RPA_11_0_CARE%Hospital%EF%BF%BDnjara%Hills_0_21_310" CVScreenId="9f2e975d-c4c6-4a99-a289-10f4194e0fed" DesignTimeRectangle="1528, 154, 30, 21" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl aaname='Close' /&gt;" Guid="6ecf7a5d-a0bd-48b4-9663-cdce1d33ee62" InformativeScreenshot="afc2e8b0a0ad69d434df5168b4e567e3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="552,2049" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click  - Discharge summary &quot;grouping&quot;" sap:VirtualizedContainerService.HintSize="518,189" sap2010:WorkflowViewState.IdRef="NClick_5" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b9a64f55-903f-4b70-a263-62b0d5f2765a" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="http://carehis.carehospitals.com:5000/EMRBILLING/IPBill.aspx?MPG=P310&amp;Mpg=P310&amp;irtrf=9169ACF5-DBF2-402D-AA96-16B9CD2FE183&amp;OP=False_0_1_4_2_13_2_11923_RPA_11_0_CARE%Hospital%EF%BF%BDnjara%Hills_0_21_310" CVScreenId="e8488404-ebb0-4f22-b411-5f698a9e312c" DesignTimeRectangle="1486, 196, 20, 20" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;wnd app='chrome.exe' title='*' /&gt;&lt;ctrl name='Download' /&gt;" Guid="fb374a35-5c6e-45f0-8366-d49b5317e9f1" InformativeScreenshot="9418fb419cfbd118c9fd861193810168.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='CARE Hospital Banjara Hills - Google Chrome' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Save As  - Discharge summary" sap:VirtualizedContainerService.HintSize="518,1616" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" OpenMode="Never" ScopeGuid="a270afb3-b74b-4c44-b645-665d1eacd177" Version="V2">
+                    <uix:NApplicationCard.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="484,1293" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:Boolean" Name="Daily_patient_Discharge_Summary" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:FolderExistsX DisplayName="Folder Exists" Exists="[Daily_patient_Discharge_Summary]" sap:VirtualizedContainerService.HintSize="450,165" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[&quot;C:\Users\venkat_suvera_sp\Desktop\ECHS IP Submission Bills&quot;+&quot; &quot;+DS_Document_Date_format+&quot;\&quot;+In_Discharge_IP_no.ToString.Replace(&quot;/&quot;,&quot;&quot;)]" />
+                          <If Condition="[Daily_patient_Discharge_Summary.ToString.ToUpper = &quot;TRUE&quot;]" sap:VirtualizedContainerService.HintSize="450,884" sap2010:WorkflowViewState.IdRef="If_1">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,301" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into  - Discharge summary &quot;File name&quot;" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382,241" sap2010:WorkflowViewState.IdRef="NTypeInto_3" InteractionMode="HardwareEvents" ScopeIdentifier="a270afb3-b74b-4c44-b645-665d1eacd177" Text="[&quot;C:\Users\venkat_suvera_sp\Desktop\ECHS IP Submission Bills&quot;+&quot; &quot;+DS_Document_Date_format+&quot;\&quot;+In_Discharge_IP_no.ToString.Replace(&quot;/&quot;,&quot;&quot;)+&quot;\&quot;+&quot;Discharge Summary&quot;]" Version="V4">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable CVScreenId="baee31b3-08b0-4e8b-a9b2-9ace67ca7802" DesignTimeRectangle="136, 404, 495, 17" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' /&gt;&lt;wnd aaname='File name:' /&gt;" Guid="caf06a4c-6226-4342-bfed-ac0eec2f6625" InformativeScreenshot="b0d3d14c38eef44b1bf9691e34eda3ac.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target CVScreenId="baee31b3-08b0-4e8b-a9b2-9ace67ca7802" CvTextArea="73, 406, 55, 12" CvTextArgument="File name:" CvType="Text" DesignTimeRectangle="18, 401, 115, 23" ElementType="Text" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' automationid='' check:text='File name:' /&gt;" Guid="281e6b30-cb9d-423d-ad47-b522fb8b94b5" SearchSteps="Selector, FuzzySelector, CV" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NTypeInto.Target>
+                                </uix:NTypeInto>
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,413" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="382,112" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;C:\Users\venkat_suvera_sp\Desktop\ECHS IP Submission Bills&quot;+&quot; &quot;+DS_Document_Date_format+&quot;\&quot;+In_Discharge_IP_no.ToString.Replace(&quot;/&quot;,&quot;&quot;)]" />
+                                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into  - Discharge summary &quot;File name&quot;" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="382,241" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="HardwareEvents" ScopeIdentifier="a270afb3-b74b-4c44-b645-665d1eacd177" Text="[&quot;C:\Users\venkat_suvera_sp\Desktop\ECHS IP Submission Bills&quot;+&quot; &quot;+DS_Document_Date_format+&quot;\&quot;+In_Discharge_IP_no.ToString.Replace(&quot;/&quot;,&quot;&quot;)+&quot;\&quot;+&quot;Discharge Summary&quot;]" Version="V4">
+                                  <uix:NTypeInto.Target>
+                                    <uix:TargetAnchorable CVScreenId="baee31b3-08b0-4e8b-a9b2-9ace67ca7802" DesignTimeRectangle="136, 404, 495, 17" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' /&gt;&lt;wnd aaname='File name:' /&gt;" Guid="caf06a4c-6226-4342-bfed-ac0eec2f6625" InformativeScreenshot="b0d3d14c38eef44b1bf9691e34eda3ac.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                          <uix:Target CVScreenId="baee31b3-08b0-4e8b-a9b2-9ace67ca7802" CvTextArea="73, 406, 55, 12" CvTextArgument="File name:" CvType="Text" DesignTimeRectangle="18, 401, 115, 23" ElementType="Text" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' automationid='' check:text='File name:' /&gt;" Guid="281e6b30-cb9d-423d-ad47-b522fb8b94b5" SearchSteps="Selector, FuzzySelector, CV" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NTypeInto.Target>
+                                </uix:NTypeInto>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click  - Discharge summary &quot;Save&quot;" sap:VirtualizedContainerService.HintSize="450,182" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a270afb3-b74b-4c44-b645-665d1eacd177" Version="V4">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable CVScreenId="baee31b3-08b0-4e8b-a9b2-9ace67ca7802" DesignTimeRectangle="451, 469, 88, 26" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;wnd title='*Save' aaname='Save' /&gt;" Guid="9a6d27eb-db20-4d86-b002-f93a2318d434" InformativeScreenshot="ef673edca585946a4b4650bb03518b99.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                        </Sequence>
+                      </ActivityAction>
+                    </uix:NApplicationCard.Body>
+                    <uix:NApplicationCard.TargetApp>
+                      <uix:TargetApp Area="223, 6, 664, 515" FilePath="C:\Program Files\Google\Chrome\Application\chrome.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKsSURBVDhPZdPLTxNRFAbw2WEkUYLRIEGsQEkptp0+NITntKAFgUDUlYmYGI0r/wAVdOuKKTZQQZ4+Y8LShRGxIBRoTBhdsbMG6AN5tIBGw0zv553bgRQ5yS/fnd57TiYzU+7/WhUcQsxp96y47KEVlwM/XQ4SczqkmGAfigq8Tjt2sEICnxUTHCJtBiPYSVSwIV2khqq2iepZrS1V6g8RwSZFa2ysia7pYSs9bCUsq3gSTrNcaZH2DYlU8yLdQLrlSmo3K8xkqcKMpUoLWFKLFWaRNfNvWnUjt6rYJp1M6AaiV+vxd/4LlpcS2PpDQOJ+JKVmKEEbSVLKnBXJoJXIs7zA8a9ah9y+Jiw4LVgsNyF8xc0a7wz9wrlHCeaabxvhtQSU+XrIsyYos2bKROSZsx7O8rxF4l+04PHdKvwoK8XvyXE0dW7C9jBBxffcHtwGSQShzBg1JYQKcabhZphGmkhZ7yXM1VoQjidh6dhg+I44pWbqenk1DjlQDCWgJ3JAD3laD+7sYCNKNTfbBbK4GIepfQOmB+sUTXXNrjfY81CmCzRnGM7Y3xAyDjSQkv4G0DWCkW+48WwTxvvre0qpy94EyNp7KFP5mlOQp/IkrqTXLRr63DD01TOu121YiG2i1RuH4d4a00YHLsS2IAfPQ57MpU5C+azKHeIMvjqh2HcBxU8vYjedL69j7HuA3bI6bC78FV3vGmnjCSiUPHGcgT8n9WkX9dSJhT21hCYp6q6DqrC7lqjUdXUffUMfcqBMHKON2ZD92UhOZKc+JLV0opBV4HVKBV4XCik1mSdOlgOjeij+o0T2H4H8iZHgz9r/f1CH6LoEj84jgOYuUukrpw2ZmsOQxzM9B5rTiw7SUcOnxRopv7OavB3Nw854RmjnY4ZHHjskaMe04rh/A+kk+qOwHW8AAAAASUVORK5CYII=" InformativeScreenshot="ccef9cea2033fc8d65ed0e659b80b6b7.png" Selector="&lt;wnd app='chrome.exe' title='Save As' /&gt;" Title="Save As" />
+                    </uix:NApplicationCard.TargetApp>
+                  </uix:NApplicationCard>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click  - Discharge summary&quot;Close&quot;" sap:VirtualizedContainerService.HintSize="518,182" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b9a64f55-903f-4b70-a263-62b0d5f2765a" Version="V4">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="http://carehis.carehospitals.com:5000/EMRBILLING/IPBill.aspx?MPG=P310&amp;Mpg=P310&amp;irtrf=9169ACF5-DBF2-402D-AA96-16B9CD2FE183&amp;OP=False_0_1_4_2_13_2_11923_RPA_11_0_CARE%Hospital%EF%BF%BDnjara%Hills_0_21_310" CVScreenId="1bff10de-cd03-4bb2-a2b4-f274c17de92f" DesignTimeRectangle="1528, 154, 30, 21" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Close' /&gt;" Guid="2a0936bb-37e5-47b9-9e1d-63ebdd694b50" InformativeScreenshot="7a7b0b045cde89e17b431a72d58b7991.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="http://carehis.carehospitals.com:5000/EMRBILLING/IPBill.aspx?MPG=P310&amp;Mpg=P310&amp;irtrf=9169ACF5-DBF2-402D-AA96-16B9CD2FE183&amp;OP=False_0_1_4_2_13_2_11923_RPA_11_0_CARE%Hospital%EF%BF%BDnjara%Hills_0_21_310" CVScreenId="9f2e975d-c4c6-4a99-a289-10f4194e0fed" DesignTimeRectangle="16, 178, 390, 24" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl aaname='Discharge summary is not prepared..!!' /&gt;" Guid="28c71d68-ab1a-4b75-b6b1-d57098bed3af" InformativeScreenshot="dc6ec5c5c7aafda32e9ea12546d04644.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Discharge summary&quot;IP Billing&quot;" sap:VirtualizedContainerService.HintSize="1056,182" sap2010:WorkflowViewState.IdRef="NClick_8" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b9a64f55-903f-4b70-a263-62b0d5f2765a" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="http://carehis.carehospitals.com:5000/EMRBILLING/BillDispatch.aspx?MPG=P560&amp;Mpg=P560&amp;irtrf=9169ACF5-DBF2-402D-AA96-16B9CD2FE183&amp;OP=False_0_1_4_2_13_2_11923_RPA_11_0_CARE%Hospital%EF%BF%BDnjara%Hills_0_21_560" CVScreenId="6fca29f7-2945-4802-958f-22128cb4f826" DesignTimeRectangle="382, 176, 57, 24" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl aaname='IP Billing' class='rmText' /&gt;" Guid="869f45c8-c473-4e5c-b1e6-d714983581ed" InformativeScreenshot="3b7eca94df5628f56928c8c5be0f222b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='CARE Hospital Banjara Hills' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+              </uix:NClick.Target>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1616, 876" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="f57276d76ff9085e6a6ed797e0608d50.jpg" Selector="&lt;html app='chrome.exe' title='*' /&gt;" Title="CARE Hospital Banjara Hills" Url="http://carehis.carehospitals.com:5000/EMRBILLING/IPBill.aspx?MPG=P310&amp;Mpg=P310&amp;irtrf=9169ACF5-DBF2-402D-AA96-16B9CD2FE183&amp;OP=False_0_1_4_2_13_2_11923_RPA_11_0_CARE%Hospital%EF%BF%BDnjara%Hills_0_21_310" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
